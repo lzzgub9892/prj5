@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="context1" >
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://39.98.72.31:3306/prj5" userId="prj5" password="#@$*()#$" />
+    <javaModelGenerator targetPackage="com.woniu.entity" targetProject="prj5" ></javaModelGenerator>
+    <sqlMapGenerator targetPackage="com.woniu.mapper" targetProject="prj5" ></sqlMapGenerator>
+    <javaClientGenerator targetPackage="com.woniu.mapper" targetProject="prj5" type="XMLMAPPER" />
+    <table  schema="" tableName="servicestatus"></table>
+        <table  schema="" tableName="servicetype"></table>
+        <table  schema="" tableName="service"></table>
+        <table  schema="" tableName="beinmortgage"></table>
+        <table  schema="" tableName="existmortgage"></table>
+        <table  schema="" tableName="company"></table>
+        <table  schema="" tableName="publicbuildings"></table>
+        <table  schema="" tableName="serviceshare"></table>
+        <table  schema="" tableName="sharetype"></table>
+        <table  schema="" tableName="otherregistration"></table>
+        <table  schema="" tableName="indept"></table>
+        <table  schema="" tableName="zone"></table>
+        <table  schema="" tableName="gainingmethod"></table>
+        <table  schema="" tableName="landownership"></table>
+        <table  schema="" tableName="landuse"></table>
+        <table  schema="" tableName="landnumber"></table>
+        <table  schema="" tableName="client"></table>
+        <table  schema="" tableName="city"></table>
+        <table  schema="" tableName="buildingarea"></table>
+        <table  schema="" tableName="dissentingregistration"></table>
+        <table  schema="" tableName="roomtype"></table>
+        <table  schema="" tableName="roomstatus"></table>
+        <table  schema="" tableName="buildingstructure"></table>
+        <table  schema="" tableName="room"></table>
+        <table  schema="" tableName="ownership"></table>
+        <table  schema="" tableName="tree"></table>
+        <table  schema="" tableName="closeoffice"></table>
+        <table  schema="" tableName="closeregistration"></table>
+        <table  schema="" tableName="building"></table>
+        <table  schema="" tableName="house"></table>
+        <table  schema="" tableName="housepublicbuilding"></table>
+        <table  schema="" tableName="housestatus"></table>
+        <table  schema="" tableName="userinfo"></table>
+        <table  schema="" tableName="userinforole"></table>
+        <table  schema="" tableName="province"></table>
+        <table  schema="" tableName="rentfile"></table>
+        <table  schema="" tableName="netsign"></table>
+        <table  schema="" tableName="roletree"></table>
+        <table  schema="" tableName="role"></table>
+        <table  schema="" tableName="designpurposes"></table>
+        <table  schema="" tableName="registrationtype"></table>
+  </context>
+</generatorConfiguration>

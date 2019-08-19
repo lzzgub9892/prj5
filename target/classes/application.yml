@@ -1,0 +1,22 @@
+server:
+  port: 9000
+  
+spring: 
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.98.72.31:3306/prj5?characterEncoding=UTF-8
+    username: prj5
+    password: \#@$*()#$\
+    
+logging: 
+  level: 
+    com: 
+      woniu: 
+        mapper: DEBUG     
+                
+mybatis: 
+  config-location: classpath:configuration.xml                
