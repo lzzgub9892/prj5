@@ -66,4 +66,10 @@ public class Roomstatus {
     public void setRoomstatus(String roomstatus) {
         this.roomstatus = roomstatus;
     }
+
+	@Override
+	public String toString() {
+		return "Roomstatus [roomstatusid=" + roomstatusid + ", roomstatus=" + roomstatus + "]";
+	}
+    
 }

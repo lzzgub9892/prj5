@@ -15,6 +15,7 @@
     <result column="totalarea" jdbcType="INTEGER" property="totalarea" />
     <result column="descripe" jdbcType="VARCHAR" property="descripe" />
     <result column="hid" jdbcType="INTEGER" property="hid" />
+    <collection property="house" column="hid" select="com.woniu.mapper.HouseMapper.selectByPrimaryKey"></collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

@@ -22,6 +22,17 @@
     <result column="location" jdbcType="VARCHAR" property="location" />
     <result column="housedrawing" jdbcType="VARCHAR" property="housedrawing" />
     <result column="housestatusid" jdbcType="INTEGER" property="housestatusid" />
+    <collection property="company" column="cid" select="com.woniu.mapper.CompanyMapper.selectByPrimaryKey"></collection>
+    <collection property="landuse" column="lid" select="com.woniu.mapper.LanduseMapper.selectByPrimaryKey"></collection>
+    <collection property="landownership" column="oid" select="com.woniu.mapper.LandownershipMapper.selectByPrimaryKey"></collection>
+    <collection property="roomtype" column="rid" select="com.woniu.mapper.RoomtypeMapper.selectByPrimaryKey"></collection>
+    <collection property="designpurposes" column="did" select="com.woniu.mapper.DesignpurposesMapper.selectByPrimaryKey"></collection>
+    <collection property="zone" column="zid" select="com.woniu.mapper.ZoneMapper.selectByPrimaryKey"></collection>
+    <collection property="buildingarea" column="bid" select="com.woniu.mapper.BuildingareaMapper.selectByPrimaryKey"></collection>
+    <collection property="landnumber" column="lnid" select="com.woniu.mapper.LandnumberMapper.selectByPrimaryKey"></collection>
+    <collection property="buildingstructure" column="bsid" select="com.woniu.mapper.BuildingstructureMapper.selectByPrimaryKey"></collection>
+    <collection property="gainingmethod" column="gid" select="com.woniu.mapper.GainingmethodMapper.selectByPrimaryKey"></collection>
+    <collection property="housestatus" column="housestatusid" select="com.woniu.mapper.HousestatusMapper.selectByPrimaryKey"></collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
