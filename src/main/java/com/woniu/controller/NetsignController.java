@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.woniu.entity.NetsignObj;
 import com.woniu.service.INetsignService;
 
-@RequestMapping("/admin/examine/netsign/")
+@RequestMapping("/admin/netsign/")
 @Controller
 public class NetsignController {
 	
 	@Resource
 	private INetsignService netsignServiceImpl;
-	 
+	
+	@RequestMapping("register")
 	public String register(NetsignObj netsignObj) {
 		netsignServiceImpl.save(netsignObj);
 		return null;

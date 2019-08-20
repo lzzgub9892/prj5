@@ -10,7 +10,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://39.98.72.31:3306/prj5?characterEncoding=UTF-8
     username: prj5
-    password: \#@$*()#$\
+    password: '#@$*()#$'
     
 logging: 
   level: 
