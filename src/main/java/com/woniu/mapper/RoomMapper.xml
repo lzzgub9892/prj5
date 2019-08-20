@@ -12,9 +12,7 @@
     <result column="roomstatusid" jdbcType="INTEGER" property="roomstatusid" />
     <result column="buildingid" jdbcType="INTEGER" property="buildingid" />
   </resultMap>
-  <!-- 
-  	这个sql是通过楼盘名称、楼栋编号、房屋编号查到对应的房屋
-   -->
+  
   <select id="findRoomidByAllName" resultMap="BaseResultMap">
   	SELECT * FROM room r WHERE EXISTS(	
 		SELECT buildingid FROM building b WHERE EXISTS(

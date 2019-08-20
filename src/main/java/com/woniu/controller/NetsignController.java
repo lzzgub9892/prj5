@@ -21,7 +21,7 @@ public class NetsignController {
 	
 	@Resource
 	private INetsignService netsignServiceImpl;
-	
+	 
 	public String register(NetsignObj netsignObj) {
 		netsignServiceImpl.save(netsignObj);
 		return null;

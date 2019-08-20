@@ -13,8 +13,8 @@ import com.woniu.service.INationService;
 @RequestMapping("/admin/nation/")
 public class NationController {
 	@Resource
-	private INationService nationService;
-	
+	private  INationService nationService;
+	 
 	@RequestMapping("findByNation")
 	public List findByNation(String nation) {
 		if(nation!=null)
