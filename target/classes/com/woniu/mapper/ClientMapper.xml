@@ -14,6 +14,10 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="zid" jdbcType="INTEGER" property="zid" />
   </resultMap>
+  <select id="findByNameAndIdcard" resultMap="BaseResultMap">
+  	SELECT * FROM CLIENT WHERE clientname=#{clientname} AND idcard=#{idcard}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
