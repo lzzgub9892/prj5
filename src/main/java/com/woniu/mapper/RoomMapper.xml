@@ -11,8 +11,9 @@
     <result column="roomnumber" jdbcType="VARCHAR" property="roomnumber" />
     <result column="roomstatusid" jdbcType="INTEGER" property="roomstatusid" />
     <result column="buildingid" jdbcType="INTEGER" property="buildingid" />
+    <collection property="roomstatus" column="roomstatusid" select="com.woniu.mapper.RoomstatusMapper.selectByPrimaryKey"></collection>
+    <collection property="building" column="buildingid" select="com.woniu.mapper.BuildingMapper.selectByPrimaryKey"></collection>
   </resultMap>
-  
   <select id="findRoomidByAllName" resultMap="BaseResultMap">
   	SELECT * FROM room r WHERE EXISTS(	
 		SELECT buildingid FROM building b WHERE EXISTS(

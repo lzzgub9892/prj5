@@ -1,9 +1,12 @@
 package com.woniu.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.woniu.entity.House;
 import com.woniu.entity.HouseExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
 
 public interface HouseMapper {
 
