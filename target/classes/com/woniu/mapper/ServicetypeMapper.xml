@@ -9,7 +9,13 @@
     -->
     <id column="servicetypeid" jdbcType="INTEGER" property="servicetypeid" />
     <result column="servicetype" jdbcType="VARCHAR" property="servicetype" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
   </resultMap>
+  
+  <select id="findByPid" resultMap="BaseResultMap">
+  	select * from servicetype where pid=#{pid}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

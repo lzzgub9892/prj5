@@ -18,6 +18,17 @@ public class Servicetype {
 	 * @return  the value of servicetype.servicetypeid
 	 * @mbg.generated  Mon Aug 19 16:10:36 CST 2019
 	 */
+	
+	private Integer pid;
+	
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
 	public Integer getServicetypeid() {
 		return servicetypeid;
 	}

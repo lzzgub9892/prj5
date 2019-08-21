@@ -75,7 +75,7 @@
 				children: "children",
 				name: "name",
 				title: "",
-				url: "url"
+				url: ""
 			},
 			simpleData: {
 				enable: false,
