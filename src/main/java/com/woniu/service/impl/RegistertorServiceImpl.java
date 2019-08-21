@@ -7,10 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.woniu.entity.Room;
 import com.woniu.mapper.RoomMapper;
-import com.woniu.service.IRegisterService;
+import com.woniu.service.IRegistertorService;
 
 @Service
-public class RegisterServiceImpl implements IRegisterService {
+public class RegistertorServiceImpl implements IRegistertorService {
 
 	@Resource
 	private RoomMapper roomMapper;

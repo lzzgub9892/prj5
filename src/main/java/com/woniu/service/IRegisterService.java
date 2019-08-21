@@ -1,7 +1,11 @@
 package com.woniu.service;
 
-import com.woniu.entity.Room;
+import com.woniu.entity.Registertemporary;
+import com.woniu.entity.Servicesharetemporary;
 
 public interface IRegisterService {
-	Room findByRoomId(Integer roomid);
+	
+	
+	void save(Registertemporary regi,Servicesharetemporary sst);
+
 }

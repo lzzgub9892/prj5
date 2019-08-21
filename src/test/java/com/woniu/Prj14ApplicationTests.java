@@ -13,7 +13,7 @@ import com.woniu.entity.Nation;
 import com.woniu.entity.Room;
 import com.woniu.mapper.NationMapper;
 import com.woniu.mapper.RoomMapper;
-import com.woniu.service.IRegisterService;
+import com.woniu.service.IRegistertorService;
 import com.woniu.service.IRoomService;
 import com.woniu.tools.Pinyin;
 
@@ -21,7 +21,7 @@ import com.woniu.tools.Pinyin;
 @SpringBootTest
 public class Prj14ApplicationTests {
 	@Resource
-	private IRegisterService RegisterServiceImpl;
+	private IRegistertorService RegisterServiceImpl;
 	@Test
 	public void contextLoads() {
 	}

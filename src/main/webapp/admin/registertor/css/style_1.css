@@ -1,0 +1,253 @@
+A:link    {
+           COLOR: #2151A5;
+           TEXT-DECORATION: none
+          }
+A:visited {
+           COLOR: #008080;
+           TEXT-DECORATION: none
+          }
+A:hover   {
+           COLOR: #ff0000;
+           TEXT-DECORATION: underline
+          }
+BODY      {
+           color: #000000;
+           FONT-SIZE: 9pt;
+           font-famliy:宋体;
+          }
+BODY      {
+	   scrollbar-face-color: #C9DAF0; 	
+	   scrollbar-shadow-color: #5B8DCF; 	
+	   scrollbar-highlight-color: #ffffff; 	
+	   scrollbar-3dlight-color: #666666; 	
+	   scrollbar-darkshadow-color: #999999; 	
+	   scrollbar-track-color: #ffffff; 	
+	   scrollbar-arrow-color: #5B8DCF
+          }
+.BODY1    {
+	   background-color: #749CDF;
+          }
+.BODY2    {
+	   background-image:url(../images/bg_main_003.gif);
+          }
+.BODY3    {
+	   background-image:url(../images/bg_main_002.gif);
+          }
+
+.bg1      {
+	   background-image:url(../images/bg_login_001.gif);
+           background-repeat:repeat-x;
+           background-attachment:fixed;
+          }
+.bg2      {
+	   background-image:url(../images/bg_login_001.gif);
+           background-repeat:repeat-x;
+           background-attachment:fixed;
+          }
+input     {
+           background-color: rgb(241,244,251);
+           border: 1px solid rgb(0,94,187);
+           font-size: 9pt; 
+           font-style: normal; 
+           font-variant: normal; 
+           line-height: normal;
+          }
+.input1   {
+           BACKGROUND-COLOR:rgb(255,255,255); 
+           border: 0px solid rgb(255,255,255);
+           FONT-SIZE: 9pt
+          }
+.input2   {
+           BACKGROUND-COLOR:#ffffff; 
+           BORDER-BOTTOM:#ffffff 1px solid;
+           BORDER-LEFT:#ffffff 1px solid; 
+           BORDER-RIGHT: #ffffff 1px solid; 
+           BORDER-TOP: #ffffff 1px solid; 
+           COLOR: rgb(0,0,0); FONT-SIZE: 9pt
+          }
+.input3   {
+           FONT-SIZE: 9pt;
+           text-align: right
+          }
+.input4   {
+           background-color: rgb(0,128,128);
+           background-repeat: repeat; 
+           background-attachment: scroll; 
+           color: rgb(255,255,255); 
+           cursor: hand; 
+           font-size: 9pt; 
+           font-style: normal; 
+           font-variant: normal; 
+           font-weight: normal;
+           height: 18px; 
+           line-height: normal;
+           border: 1px solid rgb(0,0,0);
+           background-position: 0%
+          }
+.input5   {
+           background-color: #D7EFE9;
+           BORDER-BOTTOM:#D7EFE9 1px solid;
+           BORDER-LEFT:#D7EFE9 1px solid;
+           BORDER-RIGHT: #D7EFE9 1px solid;
+           BORDER-TOP: #D7EFE9 1px solid;
+           COLOR: rgb(0,0,0); FONT-SIZE: 9pt
+          } 
+.input6   {
+           background-color: rgb(241,244,251);
+           border: 1px solid rgb(33,8,165);
+           font-size: 9pt; 
+           font-style: normal; 
+           font-variant: normal; 
+           line-height: normal;
+          }
+select    {
+           background-color: rgb(241,244,251);
+           border: 1px solid rgb(0,94,187);
+           cursor: hand; 
+           font-size: 9pt; 
+           font-style: normal; 
+           font-variant: normal; 
+           line-height: normal;
+          }
+textarea  {
+           background-color: rgb(241,244,251);
+           border: 1px solid rgb(0,94,187);
+           cursor: hand; 
+           font-size: 9pt; 
+           font-style: normal; 
+           font-variant: normal; 
+           line-height: normal;
+          }
+.f1       {COLOR: #2151A5;FONT: 14px 宋体}
+.f2       {COLOR: #ffffff;FONT: 9pt 宋体}
+.f3       {COLOR: #000000;FONT: 14px 宋体;font-weight: bold}
+.f4       {COLOR: #084590;FONT: 9pt 宋体}
+.f5       {COLOR: #ffffff;FONT: 9pt 宋体;font-weight: bold}
+.f6       {COLOR: #000080;FONT: 13px 宋体;}
+.f7       {font-size: 12px;COLOR: #0046A6;font-family: 宋体; FONT-WEIGHT: bold}
+
+.p1       {color: #000000; font-size: 9pt; font-family: 宋体}
+.p2       {color: #008080; font-size: 11pt; font-family: 宋体; FONT-WEIGHT: bold}
+.p3       {color: #FF8000; font-size: 9pt; font-family: 宋体; FONT-WEIGHT: bold}
+.p4       {color: #008080; font-size: 9pt; font-family: 宋体}
+.p5       {color: #008080; font-size: 9pt; font-family: 宋体}
+.p6       {color: #666666}
+.p7       {color: #408080}
+.p8       {color: #008080; font-size: 9pt; font-family: 宋体; FONT-WEIGHT: bold}
+.p9       {color: #FF0000}
+
+.td1      {background-color: #749CDF;}
+.td2      {background-color: #4A7AC9;}
+.td3      {background-color: #A1B5EC;}
+.td4      {background-color: #ffffff;}
+.td5      {background-color: #CEDEFA;}
+.td6      {background-color: #E7ECFA;}
+.td7      {background-color: #A8A9C8;}
+.td8      {background-color: #C2C3D7;}
+.td9      {background-color: #E3EBFE;HEIGHT:27;}
+.td10     {background-color: #A4BDE8;}
+.td11     {background-image:url(../images/bg_main_006.gif);font-size: 9pt; COLOR: #0046A6;font-family: 宋体; FONT-WEIGHT: bold}
+
+
+.tr1      {HEIGHT:25;font-size: 12px;
+           COLOR: #749CDF;font-family: "宋体"; FONT-WEIGHT: bold；
+	   background-image:url(../images/bg_main_003.gif);
+          }
+.tr00      {background-image:url(../images/bg_main_004.gif);HEIGHT:25;font-size: 12px;
+           COLOR: #0046A6;font-family: 宋体; FONT-WEIGHT: bold	   
+          }
+.tr2      {
+	HEIGHT:27;
+	background-color: #00FF00;
+}
+.tr3      {background-color: #F1F6FC;HEIGHT:27}
+.tr4      {HEIGHT:1}
+.tr5      {background-color: #BFD3EE;HEIGHT:1}
+.tr6      {HEIGHT:10}
+.tr7      {background-image:url(../images/bg_main_005.gif);background-color: #BFD3EE;HEIGHT:29}
+.tr8      {background-color: #FFFFFF;HEIGHT:23}
+
+.button   {
+           background: #D6E7EF;
+           border-bottom: 1px solid #104A7B;
+           border-right: 1px solid #104A7B;
+           border-left:1px solid #AFC4D5;
+           border-top:1px solid #AFC4D5;
+           color:#000066;
+           height:19px;
+           text-decoration:none;
+           cursor: hand
+          }
+TABLE     {
+           FONT-SIZE: 9pt;
+           font-famliy: 宋体;
+          }
+.table1   {
+           background-color: #5F8BCC;
+           Cell-padding:3px solid;
+           Cell-Spacing:1px solid;
+           width:98%; 
+          }
+.table0   {
+           background-color: rgb(95,139,204);
+           border: 1px solid;
+           cell-spacing:1px solid;
+           border-color:rgb(95,139,204);
+           border-colorlight:rgb(95,139,204);
+           border-colordark=:rgb(95,139,204);
+           cell-padding:3px solid;
+          }
+.table11   {
+           BORDER-BOTTOM:#1D55A7 1px solid;
+           BORDER-LEFT:#1D55A7 1px solid; 
+           BORDER-RIGHT:#1D55A7 1px solid; 
+           BORDER-TOP:#1D55A7 1px solid; 
+          }
+.table2   {
+           width:100%; 
+          }
+.table3   {
+           background-color: #008080;
+          }
+.table4   {
+           FONT-SIZE: 9pt; font-famliy: 宋体;
+          }
+.table5   {
+           background-color: #C0C0C0;
+          }
+.table6   {
+           background-color: rgb(241,244,251);
+           border:1px solid rgb(0,94,187);
+          }
+
+.TABLE9   {
+           Border-size:1px solid;
+           Cell-padding:3px solid;
+           Cell-Spacing:0px solid;
+           Border:#FFFFFF;
+           Border-light:solid #5F8BCC;
+           Border-Dark:solid #FFFFFF;
+          }
+.unnamed1 {
+	font-size: 12px;
+	color: #000000;
+	background-color: #5f8bcc;
+
+}
+.unnamed2 {
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.unnamed3 {
+	font-size: 12px;
+	color: #FF0000;
+}
+.unnamed4 {
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.unnamed5 {
+	font-size: 12px;
+	color: #999999;
+}
