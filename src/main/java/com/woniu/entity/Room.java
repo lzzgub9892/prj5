@@ -1,6 +1,20 @@
 package com.woniu.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
+	private List<Ownership> ownerships=new ArrayList<Ownership>();
+	
+	
+
+	public List<Ownership> getOwnerships() {
+		return ownerships;
+	}
+
+	public void setOwnerships(List<Ownership> ownerships) {
+		this.ownerships = ownerships;
+	}
 
 	private Building building;
 	

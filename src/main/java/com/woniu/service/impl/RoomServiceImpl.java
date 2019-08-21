@@ -14,6 +14,7 @@ public class RoomServiceImpl implements IRoomService {
 
 	@Resource
 	private RoomMapper roomMapper;
+	
 	@Resource
 	private BuildingMapper buildingMapper;
 	

@@ -15,6 +15,9 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="sharetypeid" jdbcType="INTEGER" property="sharetypeid" />
   </resultMap>
+  <select id="findByClientId" resultMap="BaseResultMap">
+  	SELECT * FROM serviceshare WHERE clientid=#{clientid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

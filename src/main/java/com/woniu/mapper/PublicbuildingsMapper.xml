@@ -10,6 +10,11 @@
     <id column="pbid" jdbcType="INTEGER" property="pbid" />
     <result column="pbname" jdbcType="VARCHAR" property="pbname" />
   </resultMap>
+  <select id="findByHid" resultMap="BaseResultMap">
+  	SELECT * FROM publicbuildings p WHERE EXISTS (
+	    SELECT pbid FROM house h WHERE h.hid=#{hid} AND pbid=p.pbid		
+	)
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

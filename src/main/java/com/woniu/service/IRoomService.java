@@ -6,4 +6,5 @@ public interface IRoomService {
 
 	Room findByRoomId(Integer roomid);
 	
+	
 }
