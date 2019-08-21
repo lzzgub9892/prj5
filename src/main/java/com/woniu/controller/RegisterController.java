@@ -28,7 +28,7 @@ public class RegisterController {
 			return "admin/register/ruku";
 		}
 		registerservice.save(regi, sst);
-		return "admin/register/ruku";
+		return "admin/register/ruku"; 
 	}
 	
 	
