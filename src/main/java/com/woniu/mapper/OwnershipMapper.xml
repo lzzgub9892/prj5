@@ -14,7 +14,12 @@
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
     <result column="clientid" jdbcType="INTEGER" property="clientid" />
+    <collection property="client" column="clientid" select="com.woniu.mapper.ClientMapper.selectByPrimaryKey"></collection>
+  	<collection property="userinfo" column="uid" select="com.woniu.mapper.UserinfoMapper.selectByPrimaryKey"></collection>
   </resultMap>
+  <select id="findByRoomId" resultMap="BaseResultMap">
+  		select*from ownership where roomid=#{roomid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

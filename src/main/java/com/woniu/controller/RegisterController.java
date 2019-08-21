@@ -1,5 +1,6 @@
 package com.woniu.controller;
 
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -32,4 +33,5 @@ public class RegisterController {
 	
 	
 }
+
 

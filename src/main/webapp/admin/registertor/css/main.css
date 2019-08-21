@@ -1,0 +1,158 @@
+A {
+	FONT-SIZE: 9pt; TEXT-DECORATION: none
+; color: #000000
+}
+.16f {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 150%; FONT-FAMILY: "宋体"
+; text-decoration: none
+}
+TD {
+	FONT-SIZE: 9pt; text-decoration: none
+}
+A:hover {
+	COLOR: #FFCC00
+; text-decoration: underline
+}
+.xb2 {  color: #333333; line-height: 140%}
+.xb3 {  color: #000066; font-size: 9pt; line-height: 140%}
+.xb4 {  font-size: 10pt; line-height: 140%; color: #006600; text-decoration: none; font-weight: normal}
+.lw {  font-size: 10pt; line-height: 150%; color: #333333; text-decoration: none; text-indent: 2em}
+.layer {  position: relative; clip:  rect(   )}
+.lbt {
+	font-size: 12px;
+	color: #FF9900;
+	text-decoration: none;
+	font-weight: bold;
+}
+.xb5 {  color: #FF6600; font-size: 11pt}
+.xb1 {  line-height: 140%; color: #000000}
+.newbt {
+	font-size: 18pt;
+	color: #000000;
+	font-weight: normal;
+	text-align: center;
+
+}
+.desc {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 20px;
+}
+.list {
+	text-align: left;
+	border: 0.5px solid #FFFFFF;
+	background-color: #F4F7F9;
+	text-indent: 4pt;
+	width: 16%;
+	height: 20px;
+}
+.listforgrid {
+	text-align: center;
+	border: 0.5px solid #FFFFFF;
+	background-color: #F4F7F9;
+	text-indent: 4pt;
+	height: 20px;
+}
+.rightlist {
+	background-color: #F7F7F7;
+	text-align: left;
+	border: 0.5px solid #FFFFFF;
+	text-indent: 4pt;
+
+}
+.bg {
+	background-color: #F9F9F9;
+	text-align: center;
+	border: 1px solid #CCCCCC;
+	margin: 1px;
+	padding: 1px;
+
+}
+.button {
+	font-size: 12px;
+	width: 60px;
+	height: 20px;
+	background-image: url(../images/but_bg.gif);
+	border: none;
+	padding-top: 3px;
+}
+.button1 {
+	font-size: 12px;
+	width: 40px;
+	height: 20px;
+	background-image: url(../images/but_bg1.gif);
+	border: none;
+	padding-top: 3px;
+}
+.longbutton {
+	font-size: 12px;
+	width: 100px;
+	height: 20px;
+	background-image: url(../images/but_bgnew1.gif);
+	border: none;
+	padding-top: 3px;
+}
+.tbutton {
+        BACKGROUND-COLOR: #ffffff;
+	font-size: 12px;
+	width: 100px;
+	height: 20px;
+	border: 1px solid #006699;
+	padding-top: 3px;
+}
+.tbutton1{
+        BACKGROUND-COLOR: #ffffff;
+	font-size: 12px;
+	width: 100px;
+	height: 20px;
+	border: 1px solid #006699;
+	padding-top: 3px;
+}
+.Edit{BORDER-COLOR: #000080;
+      MARGIN-BOTTOM: auto;
+      BORDER-TOP-WIDTH: 0px;
+      BORDER-RIGHT-WIDTH: 0px;
+      BORDER-BOTTOM-WIDTH: 1px;
+      BORDER-LEFT-WIDTH: 0px; }/*编辑框组件样式*/
+
+.textfield {
+	BACKGROUND-COLOR: #ffffff;
+	BORDER-BOTTOM: 1px solid #006699;
+	BORDER-LEFT: 1px solid #006699;
+	BORDER-RIGHT: 1px solid #006699;
+	BORDER-TOP: 1px solid #006699;
+	font-size: 9pt;
+	color: #000000;
+	clear: both;
+	text-indent: 4pt;
+}
+.toplist {
+	text-align: left;
+	text-indent: 4pt;
+	border: 0.5px solid #FFFFFF;
+	background-color: #FFFFFF;
+	height: 20px;
+}
+.toplist_text {
+	text-align: left;
+	text-indent: 4pt;
+	border: 0.5px solid #FFFFFF;
+	background-color: #FFFFFF;
+}
+.tabbg {
+	background-color: #EBEBEB;
+}
+.tabtop {
+	background-color: #E9EFF3;
+	text-align: center;
+
+}
+.backlist {
+	text-align: left;
+	border: 0.5px solid #FFFFFF;
+	backgroundColor: "#B898F3" ;
+	text-indent: 4pt;
+	width: 16%;
+	height: 20px;
+}

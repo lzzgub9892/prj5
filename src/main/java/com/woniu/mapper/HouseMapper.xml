@@ -33,6 +33,7 @@
     <collection property="buildingstructure" column="bsid" select="com.woniu.mapper.BuildingstructureMapper.selectByPrimaryKey"></collection>
     <collection property="gainingmethod" column="gid" select="com.woniu.mapper.GainingmethodMapper.selectByPrimaryKey"></collection>
     <collection property="housestatus" column="housestatusid" select="com.woniu.mapper.HousestatusMapper.selectByPrimaryKey"></collection>
+ 	<collection property="publicbuildingss" column="hid" select="com.woniu.mapper.PublicbuildingsMapper.findByHid"></collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
