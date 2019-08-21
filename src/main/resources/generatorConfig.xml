@@ -6,8 +6,9 @@
     <javaModelGenerator targetPackage="com.woniu.entity" targetProject="prj5" ></javaModelGenerator>
     <sqlMapGenerator targetPackage="com.woniu.mapper" targetProject="prj5" ></sqlMapGenerator>
     <javaClientGenerator targetPackage="com.woniu.mapper" targetProject="prj5" type="XMLMAPPER" />
-    <table  schema="" tableName="servicestatus"></table>
-        <table  schema="" tableName="servicetype"></table>
+    
+          <table  schema="" tableName="registertemporary"></table>
+        <table  schema="" tableName="servicesharetemporary"></table>
         <table  schema="" tableName="service"></table>
         <table  schema="" tableName="beinmortgage"></table>
         <table  schema="" tableName="existmortgage"></table>
@@ -47,5 +48,6 @@
         <table  schema="" tableName="role"></table>
         <table  schema="" tableName="designpurposes"></table>
         <table  schema="" tableName="registrationtype"></table>
+        
   </context>
 </generatorConfiguration>
