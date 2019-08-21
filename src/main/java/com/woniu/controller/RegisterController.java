@@ -21,12 +21,13 @@ public class RegisterController {
 	
 	@RequestMapping("save")
 	public String save(Registertemporary regi, Servicesharetemporary sst,ModelMap map) {
+		System.out.println("RegisterController.save()");
 		if(regi==null||sst==null) {
 			map.put("error", "信息不足，请补充");
-			return "/ruku";
+			return "admin/register/ruku";
 		}
 		registerservice.save(regi, sst);
-		return "/ruku";
+		return "admin/register/ruku";
 	}
 	
 	

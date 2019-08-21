@@ -18,7 +18,7 @@ body {
 </style>
 </head>
 <body>
-<form action="list_ruku.htm" method="post" name="form_info" target="main">
+<form action="save" method="post">
 <table width="738" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td colspan="5" bordercolor="#6666FF"><div align="left">申请人基本信息：</div></td>

@@ -27,10 +27,10 @@ public class RegisterserviceImpl implements IRegisterService {
 	@Override
 	public void save(Registertemporary regi, Servicesharetemporary sst) {
 		// TODO Auto-generated method stub
-		registertemporaryMapper.insertSelective(regi);
-		int rtid = regi.getRtid();
-		System.out.println(rtid);
-		sst.setRtid(rtid);
+		registertemporaryMapper.insert(regi);
+		
+		System.out.println(regi.getRtid()+"=============================================");
+		sst.setRtid(regi.getRtid());
 		servicesharetemporaryMapper.insertSelective(sst);
 	}
 
