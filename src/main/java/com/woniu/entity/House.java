@@ -1,5 +1,8 @@
 package com.woniu.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class House {
 
     @Override
@@ -7,10 +10,11 @@ public class House {
 		return "House [company=" + company + ", landuse=" + landuse + ", landownership=" + landownership + ", roomtype="
 				+ roomtype + ", designpurposes=" + designpurposes + ", zone=" + zone + ", buildingarea=" + buildingarea
 				+ ", landnumber=" + landnumber + ", buildingstructure=" + buildingstructure + ", gainingmethod="
-				+ gainingmethod + ", housestatus=" + housestatus + ", hid=" + hid + ", hname=" + hname + ", cid=" + cid
-				+ ", lid=" + lid + ", oid=" + oid + ", rid=" + rid + ", did=" + did + ", zid=" + zid + ", bid=" + bid
-				+ ", lnid=" + lnid + ", bsid=" + bsid + ", gid=" + gid + ", location=" + location + ", housedrawing="
-				+ housedrawing + ", housestatusid=" + housestatusid + "]";
+				+ gainingmethod + ", housestatus=" + housestatus + ", publicbuildingss=" + publicbuildingss + ", hid="
+				+ hid + ", hname=" + hname + ", cid=" + cid + ", lid=" + lid + ", oid=" + oid + ", rid=" + rid
+				+ ", did=" + did + ", zid=" + zid + ", bid=" + bid + ", lnid=" + lnid + ", bsid=" + bsid + ", gid="
+				+ gid + ", location=" + location + ", housedrawing=" + housedrawing + ", housestatusid=" + housestatusid
+				+ "]";
 	}
     private Company company;
     private Landuse landuse;
@@ -25,6 +29,17 @@ public class House {
     private Housestatus housestatus;
     
     
+    private List<Publicbuildings> publicbuildingss=new ArrayList<Publicbuildings>();
+    
+    
+	public List<Publicbuildings> getPublicbuildingss() {
+		return publicbuildingss;
+	}
+
+	public void setPublicbuildingss(List<Publicbuildings> publicbuildingss) {
+		this.publicbuildingss = publicbuildingss;
+	}
+
 	public Company getCompany() {
 		return company;
 	}

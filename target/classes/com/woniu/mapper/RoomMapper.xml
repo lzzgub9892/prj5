@@ -13,6 +13,7 @@
     <result column="buildingid" jdbcType="INTEGER" property="buildingid" />
     <collection property="roomstatus" column="roomstatusid" select="com.woniu.mapper.RoomstatusMapper.selectByPrimaryKey"></collection>
     <collection property="building" column="buildingid" select="com.woniu.mapper.BuildingMapper.selectByPrimaryKey"></collection>
+ 	<collection property="ownerships" column="roomid" select="com.woniu.mapper.OwnershipMapper.findByRoomId"></collection>
   </resultMap>
   <select id="findRoomidByAllName" resultMap="BaseResultMap">
   	SELECT * FROM room r WHERE EXISTS(	

@@ -26,6 +26,7 @@
 
 		function validate(){
 			var inputcode=$("#inputcode").val().toUpperCase();
+			var flag=false;
 			if(inputcode.length<=0){
 				$("#sp").text("请输入验证码");
 			}else if(inputcode!=code.toUpperCase()){
@@ -34,8 +35,9 @@
 				$("#sp").text("验证码输入错误");
 			}else{
 				$("#sp").text("");
-				alert("输入正确");
+				flag=true;
 			}
+			return flag;
 		};
 
 		$("#inputcode").blur(function(){
@@ -50,7 +52,9 @@
 			}else if($("#inputcode").val()==null||$("#inputcode").val()==""){
 				$("#sp").text("请输入验证码");
 			}else{
-				$("#login").submit();
+				if(validate()){
+					$("#login").submit();
+				}
 			}
 		});
 	});

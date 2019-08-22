@@ -1,15 +1,20 @@
 package com.woniu.service.impl;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.woniu.entity.Client;
+import com.woniu.entity.ClientExample;
 import com.woniu.entity.Netsign;
+import com.woniu.entity.NetsignExample;
 import com.woniu.entity.NetsignObj;
+import com.woniu.entity.PageBean;
 import com.woniu.entity.Room;
 import com.woniu.mapper.ClientMapper;
 import com.woniu.mapper.NetsignMapper;
@@ -37,18 +42,23 @@ public class NetsignServiceImpl implements INetsignService {
 		if(room==null) {
 			throw new RuntimeException("该房屋不存在");
 		}
+		if(room.getRoomstatusid()==3||room.getRoomstatusid()==4) {
+			throw new RuntimeException("该房屋不可以进行网签");
+		}
 		netsign.setRoomid(room.getRoomid());
-		Client buyer=new Client();
-		buyer.setClientname(netsignObj.getBuyername());
-		buyer.setIdcard(netsignObj.getBuyeridcard());
-		Client b = clientMapper.findByNameAndIdcard(buyer);
+		ClientExample example1=new ClientExample();
+		example1.createCriteria().andClientnameEqualTo(netsignObj.getBuyername());
+		example1.createCriteria().andIdcardEqualTo(netsignObj.getBuyeridcard());
+		List<Client> bs = clientMapper.selectByExample(example1);
+		Client b=bs.get(0);
 		if(b==null) {
 			throw new RuntimeException("购房者信息不正确");
 		}
-		Client seller=new Client();
-		seller.setClientname(netsignObj.getSellername());
-		seller.setIdcard(netsignObj.getSelleridcard());
-		Client s = clientMapper.findByNameAndIdcard(seller);
+		ClientExample example2=new ClientExample();
+		example2.createCriteria().andClientnameEqualTo(netsignObj.getSellername());
+		example2.createCriteria().andIdcardEqualTo(netsignObj.getSelleridcard());
+		List<Client> ss = clientMapper.selectByExample(example1);
+		Client s=ss.get(0);
 		if(s==null) {
 			throw new RuntimeException("售房者信息不正确");
 		}
@@ -70,6 +80,16 @@ public class NetsignServiceImpl implements INetsignService {
 	public Netsign findByNetid(Integer netid) {
 		Netsign netsign = netsignMapper.selectByPrimaryKey(netid);
 		return netsign;
+	}
+
+	@Override
+	public List<Netsign> findByPage(PageBean pageBean) {
+		NetsignExample example=new NetsignExample();
+		example.createCriteria().andNetstatusEqualTo(false);
+		List<Netsign> list = netsignMapper.selectByExample(example, new RowBounds(pageBean.getOffset(), pageBean.getLimit()));
+		int count = (int) netsignMapper.countByExample(example);
+		pageBean.setCount(count);
+		return list;
 	}
 
 }

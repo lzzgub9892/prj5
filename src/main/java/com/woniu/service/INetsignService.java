@@ -1,7 +1,10 @@
 package com.woniu.service;
 
+import java.util.List;
+
 import com.woniu.entity.Netsign;
 import com.woniu.entity.NetsignObj;
+import com.woniu.entity.PageBean;
 
 public interface INetsignService {
 	//新增网签
@@ -12,6 +15,9 @@ public interface INetsignService {
 	
 	//查询网签状态
 	Netsign findByNetid(Integer netid);
+	
+	List<Netsign> findByPage(PageBean pageBean);
+	
 	
 	
 
