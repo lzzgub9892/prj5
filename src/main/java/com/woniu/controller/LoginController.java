@@ -51,7 +51,7 @@ public class LoginController {
 			session.setAttribute("info", info);
 			session.setAttribute("json", json);
 			//登录成功了 你还要把登录后的对象  放入session
-			return "redirect:/admin/index.jsp";
+			return "redirect:/admin/main.jsp";
 		}catch (UnknownAccountException e) {
 			// TODO: handle exception
 			request.setAttribute("error", "没有"+info.getUname()+"这个账号");

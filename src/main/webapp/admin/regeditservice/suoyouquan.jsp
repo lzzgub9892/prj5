@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet" href="css/style_1.css">
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
@@ -34,8 +36,8 @@
 </script>
 </head>
 <body>
-<form name="form" method="post" action="/service" onSubmit=event.returnValue=window.showModalDialog("huidan.htm",this,"dialogWidth:450px;dialogHeight:450px")>
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<form name="form" method="post" action="/admin/findAll" onSubmit=event.returnValue=window.showModalDialog("huidan.htm",this,"dialogWidth:450px;dialogHeight:450px")>
+<table border="0" width="100%" cellspacing="0" cellpadding="0" class="table">
   <tr>
     <td width="25%">所有权登记</td>
     <td colspan="3">
