@@ -226,8 +226,8 @@ body {
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">${room.ownerships[0].registertime }</td>
+        <td bordercolor="#6666FF">${room.ownerships[1].registertime }</td>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">终审人/登簿人</td>
@@ -323,12 +323,7 @@ body {
         		<td bordercolor="#6666FF">${existmortgage.userinfo.uname }</td>
        		</c:forEach>
       </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">附记</td>
-         <c:forEach items="${room.existmortgages }" var="existmortgage">
-        		<td bordercolor="#6666FF">${existmortgage.descript }</td>
-       		</c:forEach>
-      </tr>
+      
       <tr class=toplist>
         <td bordercolor="#6666FF">取消业务宗号</td>
          <c:forEach items="${room.existmortgages }" var="existmortgage">
@@ -337,7 +332,11 @@ body {
       </tr>
      
       <tr align="center" class=list>
-        <td height="25" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：</td>
+        <td height="25" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：
+        	  <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		${existmortgage.descript }.<br/>
+       		</c:forEach>
+        </td>
       </tr>
       <tr align="center" class=list>
         <td colspan="5" bordercolor="#6666FF" class="toplist">注：他项权补、换证情况，以及地役权登记在本附记栏中记载。</td>
@@ -350,7 +349,7 @@ body {
         <td height="25" colspan="5" bordercolor="#6666FF"><div align="center" class="title">房屋登记簿&nbsp;他项权利部分（在建工程抵押）</div></td>
       </tr>
       <tr align="center" class=list>
-        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：20081001</div></td>
+        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：${room.roomid }</div></td>
       </tr>
       <tr class=toplist>
         <td width="245" bordercolor="#6666FF"><div align="center">内容\序号 </div></td>
@@ -359,96 +358,94 @@ body {
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.service.servicenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">一般抵押/最高抵押</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">一般抵押</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.generalmortgage }</td>
+       	</c:forEach>
+      </tr>
+      <tr class=toplist>
+        <td bordercolor="#6666FF">最高抵押</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.maxmortgage }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">抵押权人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.mortgagee }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">抵押人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.mortgager }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">在建工程坐落</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">被担保主债权数额（最高债权数额）</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">在建工程坐落 </td>
+       <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.location }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">担保范围</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+       <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.scope }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">债务履行期限（债权确定期间）</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF"> 最高债券数额</td>
+    	<c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.maxclaim }</td>
+       	</c:forEach>
+      </tr>
+      <tr class=toplist>
+        <td bordercolor="#6666FF">债务履行期限</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.returntime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">抵押登记证明号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.identificationnumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.registertime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">终审人</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.userinfo.uname }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">最高债权确定事实和数额</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.maxfact }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">抵押注销业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		<td bordercolor="#6666FF">${beinmortgage.cancelserviceid }</td>
+       	</c:forEach>
       </tr>
       <tr align="center" class=list>
-        <td height="25" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：</td>
+        <td height="25" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：
+        <c:forEach items="${room.beinmortgages }" var="beinmortgage">
+        		${beinmortgage.descript }
+       	</c:forEach><br />
+       	</td>
       </tr>
 
     </table></td>
@@ -459,7 +456,7 @@ body {
         <td height="25" colspan="5" bordercolor="#6666FF"><div align="center" class="title">房屋登记簿&nbsp;其他部分（预告登记）</div></td>
       </tr>
       <tr align="center" class=list>
-        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：20081001</div></td>
+        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：${room.roomid }</div></td>
       </tr>
       <tr class=toplist>
         <td width="245" bordercolor="#6666FF"><div align="center">内容\序号 </div></td>
@@ -468,68 +465,74 @@ body {
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.service.servicenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">预告登记种类</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.registrationtypeid }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">权利人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.obligee }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">权利人身份证明号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.boligeenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">义务人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.obligor }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">义务人身份证明号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.obligornumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">预告登记证明号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.prevregisternumber }</td>
+       	</c:forEach>
       </tr>
 
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.registertime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.userinfo.uname }</td>
+       	</c:forEach>
       </tr>
 
       <tr class=toplist>
         <td bordercolor="#6666FF">预告注销业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		<td bordercolor="#6666FF">${otherregistration.prevserviceid }</td>
+       	</c:forEach>
       </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+    
       </tr>
       <tr align="center" class=list>
-        <td height="35" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：</td>
+        <td height="35" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：
+        	 <c:forEach items="${room.otherregistrations }" var="otherregistration">
+        		${otherregistration.descript }
+       		</c:forEach>
+        </td>
       </tr>
     </table></td>
   </tr>
@@ -539,7 +542,7 @@ body {
         <td height="25" colspan="5" bordercolor="#6666FF"><div align="center" class="title">房屋登记簿&nbsp;其他部分（查封登记）</div></td>
       </tr>
       <tr align="center" class=list>
-        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：20081001</div></td>
+        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：${room.roomid }</div></td>
       </tr>
       <tr class=toplist>
         <td width="245" bordercolor="#6666FF"><div align="center">内容\序号 </div></td>
@@ -548,77 +551,95 @@ body {
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.service.servicenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">查封机关</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.closeoffice.closeoffice }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">查封文件</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+       <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.closefile }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">查封文号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.closefilenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">查封时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.closetime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">查封期限</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.closedate }</td>
+       	</c:forEach>
       </tr>
 
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+       <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.registertime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.userinfo.uname }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">查封注销业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.service.servicenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">解除查封文件</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.openfile }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">解除查封文号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.openfilenumber }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">解除查封时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.opentime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.openregistertime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		<td bordercolor="#6666FF">${closeregistration.userinfo.uname }</td>
+       	</c:forEach>
       </tr>
       <tr align="center" class=list>
-        <td height="35" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：</td>
+        <td height="35" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：
+        	<c:forEach items="${room.closeregistrations }" var="closeregistration">
+        		${closeregistration.descript }
+       		</c:forEach>
+        </td>
       </tr>
     </table></td>
   </tr>
@@ -628,7 +649,7 @@ body {
         <td height="25" colspan="5" bordercolor="#6666FF"><div align="center" class="title">房屋登记簿&nbsp;其他部分（异议登记）</div></td>
       </tr>
       <tr align="center" class=list>
-        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：20081001</div></td>
+        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：${room.roomid }</div></td>
       </tr>
       <tr class=toplist>
         <td width="245" bordercolor="#6666FF"><div align="center">内容\序号 </div></td>
@@ -637,48 +658,49 @@ body {
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		<td bordercolor="#6666FF">${dissentingregistration.service.servicenumber }</td>
+       	</c:forEach>
       </tr>
 
       <tr class=toplist>
         <td bordercolor="#6666FF">申请人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		<td bordercolor="#6666FF">${dissentingregistration.clients}</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">异议事项</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		<td bordercolor="#6666FF">${dissentingregistration.dissentingitem }</td>
+       	</c:forEach>
       </tr>
 
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		<td bordercolor="#6666FF">${dissentingregistration.registertime }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		<td bordercolor="#6666FF">${dissentingregistration.userinfo.uname }</td>
+       	</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">异议注销业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		<td bordercolor="#6666FF">${dissentingregistration.dissentingserviceid }</td>
+       	</c:forEach>
       </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
+      
       <tr align="center" class=list>
-        <td height="30" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：</td>
+        <td height="30" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：
+        	 <c:forEach items="${room.dissentingregistrations }" var="dissentingregistration">
+        		${dissentingregistration.descript }
+       	</c:forEach>
+        </td>
       </tr>
     </table></td>
   </tr>

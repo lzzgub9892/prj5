@@ -1,3 +1,18 @@
+application:
+  #版本
+  version: 1.0.0
+  #文件上传路径
+  profile: D:/profile/
+ #文件大小 MB必须大写
+ #  maxFileSize 是单个文件大小
+ #  maxRequestSize是设置总上传的数据大小
+  spring:
+   servlet:
+     multipart:
+       enabled: true
+       max-file-size: 20MB
+       max-request-size: 20MB
+
 server:
   port: 9000
   
@@ -11,6 +26,10 @@ spring:
     url: jdbc:mysql://39.98.72.31:3306/prj5?characterEncoding=UTF-8
     username: prj5
     password: '#@$*()#$'
+    
+
+    
+    
     
 logging: 
   level: 

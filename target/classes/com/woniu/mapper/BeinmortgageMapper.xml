@@ -24,7 +24,12 @@
     <result column="cancelserviceid" jdbcType="INTEGER" property="cancelserviceid" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
     <result column="roomid" jdbcType="INTEGER" property="roomid" />
+  	<collection property="service" column="serviceid" select="com.woniu.mapper.ServiceMapper.findByServiceid"></collection>
+  	<collection property="userinfo" column="uid" select="com.woniu.mapper.UserinfoMapper.selectByPrimaryKey"></collection>
   </resultMap>
+  <select id="findByRoomid" resultMap="BaseResultMap">
+  		select*from beinmortgage where roomid=#{roomid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

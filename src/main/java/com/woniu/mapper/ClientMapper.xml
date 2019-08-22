@@ -15,6 +15,11 @@
     <result column="zid" jdbcType="INTEGER" property="zid" />
     <collection property="serviceshares" column="clientid" select="com.woniu.mapper.ServiceshareMapper.findByClientId"></collection>
   </resultMap>
+  <select id="findByClientId" resultMap="BaseResultMap">
+  	select*from client c where EXISTS(
+  		select clientid from dissentingregistration where id=#{id} and clientid=c.clientid
+  	)
+  </select>
   <select id="findByNameAndIdcard" resultMap="BaseResultMap">
   	SELECT * FROM CLIENT WHERE clientname=#{clientname} AND idcard=#{idcard}
   </select>

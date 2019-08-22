@@ -10,6 +10,9 @@
     <id column="pid" jdbcType="INTEGER" property="pid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
   </resultMap>
+  <select id="findByPid" resultMap="BaseResultMap">
+  	select*from province where pid=#{pid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

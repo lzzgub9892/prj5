@@ -5,6 +5,49 @@ import java.util.List;
 
 public class Room {
 	
+	private List<Dissentingregistration> dissentingregistrations=new ArrayList<Dissentingregistration>();
+	private List<Closeregistration> closeregistrations=new ArrayList<Closeregistration>();
+	
+	
+	 
+	public List<Dissentingregistration> getDissentingregistrations() {
+		return dissentingregistrations;
+	}
+
+	public void setDissentingregistrations(List<Dissentingregistration> dissentingregistrations) {
+		this.dissentingregistrations = dissentingregistrations;
+	}
+
+	public List<Closeregistration> getCloseregistrations() {
+		return closeregistrations;
+	}
+
+	public void setCloseregistrations(List<Closeregistration> closeregistrations) {
+		this.closeregistrations = closeregistrations;
+	}
+
+	private List<Otherregistration> otherregistrations=new ArrayList<Otherregistration>();
+	
+	
+	public List<Otherregistration> getOtherregistrations() {
+		return otherregistrations;
+	}
+
+	public void setOtherregistrations(List<Otherregistration> otherregistrations) {
+		this.otherregistrations = otherregistrations;
+	}
+
+	private List<Beinmortgage> beinmortgages=new ArrayList<Beinmortgage>();
+	
+	
+	public List<Beinmortgage> getBeinmortgages() {
+		return beinmortgages;
+	}
+
+	public void setBeinmortgages(List<Beinmortgage> beinmortgages) {
+		this.beinmortgages = beinmortgages;
+	}
+
 	private List<Existmortgage> existmortgages=new ArrayList<Existmortgage>();
 	
 	

@@ -10,6 +10,7 @@
     <id column="zid" jdbcType="INTEGER" property="zid" />
     <result column="zname" jdbcType="VARCHAR" property="zname" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
+    <collection property="city" column="cid" select="com.woniu.mapper.CityMapper.findByCid"></collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

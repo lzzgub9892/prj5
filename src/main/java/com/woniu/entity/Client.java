@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-	private List<Serviceshare> serviceshares=new ArrayList<Serviceshare>();
+	
+	
+	private Serviceshare serviceshares;
 	
 	
 
-	public List<Serviceshare> getServiceshares() {
+	
+
+	public Serviceshare getServiceshares() {
 		return serviceshares;
 	}
 
-	public void setServiceshares(List<Serviceshare> serviceshares) {
+	public void setServiceshares(Serviceshare serviceshares) {
 		this.serviceshares = serviceshares;
 	}
 
@@ -154,11 +158,10 @@ public class Client {
 	public void setZid(Integer zid) {
 		this.zid = zid;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Client [serviceshares=" + serviceshares + ", clientid=" + clientid + ", clientname=" + clientname
-				+ ", address=" + address + ", idcard=" + idcard + ", phone=" + phone + ", zid=" + zid + "]";
+		return clientname;
 	}
 	
 }

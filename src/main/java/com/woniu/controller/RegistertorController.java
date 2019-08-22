@@ -1,5 +1,7 @@
 package com.woniu.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -21,8 +23,16 @@ public class RegistertorController {
 	
 	@RequestMapping("findByRoomId")
 	public String findByRoomId(Integer roomid,ModelMap map) {
-		Room room = registertorServiceImpl.findByRoomId(1);
+		System.out.println(roomid+"llllllllllllllllllllllllll");
+		Room room = registertorServiceImpl.findByRoomId(roomid);
 		map.put("room", room);
 		return "/admin/registertor/dengjibu";
+	}
+	
+	@RequestMapping("findAll")
+	public String findAll(ModelMap map) {
+		List<Room> roomList = registertorServiceImpl.findAll();
+		map.put("roomList", roomList);
+		return "/admin/registertor/list_dengjibu";
 	}
 }

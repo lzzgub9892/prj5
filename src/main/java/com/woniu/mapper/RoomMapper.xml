@@ -15,6 +15,10 @@
     <collection property="building" column="buildingid" select="com.woniu.mapper.BuildingMapper.selectByPrimaryKey"></collection>
  	<collection property="ownerships" column="roomid" select="com.woniu.mapper.OwnershipMapper.findByRoomId"></collection>
  	<collection property="existmortgages" column="roomid" select="com.woniu.mapper.ExistmortgageMapper.findByRoomid"></collection>
+  	<collection property="beinmortgages" column="roomid" select="com.woniu.mapper.BeinmortgageMapper.findByRoomid"></collection>
+  	<collection property="otherregistrations" column="roomid" select="com.woniu.mapper.OtherregistrationMapper.findByRoomid"></collection>
+  	<collection property="closeregistrations" column="roomid" select="com.woniu.mapper.CloseregistrationMapper.findByRoomid"></collection>
+  	<collection property="dissentingregistrations" column="roomid" select="com.woniu.mapper.DissentingregistrationMapper.findByRoomid"></collection>
   </resultMap>
   <select id="findRoomidByAllName" resultMap="BaseResultMap">
   	SELECT * FROM room r WHERE EXISTS(	
