@@ -18,6 +18,7 @@ body {
 </style>
 </head>
 <body>
+${error }
 <form action="save" method="post">
 <table width="738" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
