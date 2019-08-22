@@ -30,11 +30,11 @@ body {
       <td width="10%" align="center" bordercolor="#6666FF">土地证号</td>
       <td width="10%" align="center" bordercolor="#6666FF">登记时间</td>
       <td align="center" bordercolor="#6666FF">终审人/登簿人</td>
+      <td align="center" bordercolor="#6666FF">查看</td>
     </tr>
     <c:forEach items="${roomList }" var="room">
 	    <tr class=toplist onMouseOver=mouseovertr(this) onMouseOut=mouseouttr(this) onClick="document.form_list.submit();">
 	      <td bordercolor="#6666FF">${room.roomid }</td>
-	      <input type="hidden" name="roomid" value="${room.roomid }">
 	      <td bordercolor="#6666FF">
 	      							${room.building.house.zone.city.cname }
 	      							${room.building.house.zone.zname }
@@ -50,6 +50,10 @@ body {
 	      <td bordercolor="#6666FF">${room.building.house.landnumber.lnname }</td>
 	      <td bordercolor="#6666FF">${room.ownerships[0].registertime }</td>
 	      <td bordercolor="#6666FF">${room.ownerships[0].userinfo.uname }</td>
+	       <td bordercolor="#6666FF">
+	       	<a href="findByRoomId?roomid=${room.roomid }" style="color: blue">查看详情</a>
+	       </td>
+	     
 	    </tr>
     </c:forEach>
   </table>

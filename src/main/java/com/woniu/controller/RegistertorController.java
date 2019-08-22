@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -23,7 +24,6 @@ public class RegistertorController {
 	
 	@RequestMapping("findByRoomId")
 	public String findByRoomId(Integer roomid,ModelMap map) {
-		System.out.println(roomid+"llllllllllllllllllllllllll");
 		Room room = registertorServiceImpl.findByRoomId(roomid);
 		map.put("room", room);
 		return "/admin/registertor/dengjibu";
