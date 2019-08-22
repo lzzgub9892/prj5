@@ -2,6 +2,7 @@ package com.woniu.controller;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,10 +22,11 @@ public class RegisterController {
 	
 	
 	@RequestMapping("save")
-	public String save(Registertemporary regi, Servicesharetemporary sst,ModelMap map) {
+	public String save(Registertemporary regi, Servicesharetemporary sst,HttpServletRequest req) {
 		System.out.println("RegisterController.save()");
-		if(regi==null||sst==null) {
-			map.put("error", "信息不足，请补充");
+		if(regi.getAgentidcard().equals("")||sst.getShareidcard().equals("")) {
+			System.out.println("====================================");
+			req.setAttribute("error", "信息不足，请补充");
 			return "admin/register/ruku";
 		}
 		registerservice.save(regi, sst);
