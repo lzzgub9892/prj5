@@ -6,12 +6,15 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.woniu.entity.Client;
 import com.woniu.entity.ClientExample;
 import com.woniu.entity.Netsign;
+import com.woniu.entity.NetsignExample;
 import com.woniu.entity.NetsignObj;
+import com.woniu.entity.PageBean;
 import com.woniu.entity.Room;
 import com.woniu.mapper.ClientMapper;
 import com.woniu.mapper.NetsignMapper;
@@ -77,6 +80,16 @@ public class NetsignServiceImpl implements INetsignService {
 	public Netsign findByNetid(Integer netid) {
 		Netsign netsign = netsignMapper.selectByPrimaryKey(netid);
 		return netsign;
+	}
+
+	@Override
+	public List<Netsign> findByPage(PageBean pageBean) {
+		NetsignExample example=new NetsignExample();
+		example.createCriteria().andNetstatusEqualTo(false);
+		List<Netsign> list = netsignMapper.selectByExample(example, new RowBounds(pageBean.getOffset(), pageBean.getLimit()));
+		int count = (int) netsignMapper.countByExample(example);
+		pageBean.setCount(count);
+		return list;
 	}
 
 }
