@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href=../css/main.css rel=stylesheet type=text/css>
+    <link href="../js/MzTreeView10/Global.css" type="text/css" rel="stylesheet">
+    <script language="JavaScript" src="../js/MzTreeView10/MzTreeView10.js"></script>
+    <style>
+    A.MzTreeview
+    {
+      font-size: 9pt;
+      padding-left: 3px;
+    }
+    </style>
+		<script language=JavaScript>
+  		var DocEntryArray = new Array();
+  		function forfendSeriesClick(node)
+  		{
+   		var adate = new Date();
+   		if(DocEntryArray[node]!=0){
+     			if(adate.getTime()-DocEntryArray[node]<6000)
+         		 alert("请等待系统响应，不要连续操作相同链接。");
+       		else{
+         		DocEntryArray[node] = adate.getTime();
+         	}
+    	}else{
+         DocEntryArray[node] = adate.getTime();
+   		}
+  		}
+		</script>
+</head>
+  <body class=frame>
+    <SCRIPT LANGUAGE="JavaScript">
+    window.tree = new MzTreeView("tree");
+
+    tree.icons["property"] = "property.gif";
+    tree.icons["css"] = "collection.gif";
+    tree.icons["book"]  = "book.gif";
+    tree.iconsExpand["book"] = "bookopen.gif"; //展开时对应的图片
+    tree.setIconPath("../js/MzTreeView10/"); //可用相对路径
+
+tree.nodes['0_1'] = 'text:房屋产权产籍信息管理系统;method:forfendSeriesClick(1)'
+tree.nodes['1_10'] = 'text:商品房预售管理;method:forfendSeriesClick(10)'
+tree.nodes['10_101'] = 'text:楼盘管理;url:../list_loupan.htm;method:forfendSeriesClick(101)'
+tree.nodes['10_102'] = 'text:商品房预售许可证登记;url:../yushouxuke.htm;method:forfendSeriesClick(102)'
+tree.nodes['10_103'] = 'text:商品房预售合同备案登记;url:../loupanxuanze.htm;method:forfendSeriesClick(103)'
+tree.nodes['1_20'] = 'text:房屋登记;method:forfendSeriesClick(20)'
+tree.nodes['20_201'] = 'text:所有权登记;url:../suoyouquan.htm;method:forfendSeriesClick(201)'
+tree.nodes['20_202'] = 'text:他项权登记;url:../taxiangquan.htm;method:forfendSeriesClick(202)'
+tree.nodes['20_203'] = 'text:预告登记;url:../yugao.htm;method:forfendSeriesClick(203)'
+tree.nodes['20_204'] = 'text:查封登记;url:../chafeng.htm;method:forfendSeriesClick(204)'
+tree.nodes['20_205'] = 'text:更正和异议登记;url:../gengzhengyiyi.htm;method:forfendSeriesClick(205)'
+tree.nodes['1_50'] = 'text:统计查询;method:forfendSeriesClick(50)'
+tree.nodes['50_501'] = 'text:综合查询;url:../chaxun.htm;method:forfendSeriesClick(501)'
+tree.nodes['50_502'] = 'text:信息统计;url:../tongji.htm;method:forfendSeriesClick(502)'
+    tree.setURL("#");
+    tree.setTarget("main");
+    tree.focus(1);
+    document.write(tree.toString());  //亦可用 obj.innerHTML = tree.toString();  
+    </SCRIPT>
+  </body>
+</html>
