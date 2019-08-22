@@ -1,6 +1,7 @@
 package com.woniu.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ import com.woniu.entity.Netsign;
 import com.woniu.entity.NetsignObj;
 import com.woniu.entity.PageBean;
 import com.woniu.service.INetsignService;
+import com.woniu.service.IRoomService;
 
 @RequestMapping("/admin/netsign/")
 @RestController
@@ -29,6 +31,7 @@ public class NetsignController {
 	
 	@Resource
 	private INetsignService netsignServiceImpl;
+	
 	
 	@RequestMapping("register")
 	public String register(NetsignObj netsignObj) {
@@ -45,17 +48,14 @@ public class NetsignController {
 		return map;
 	}
 	
-	@RequestMapping("examineInput")
-	public ModelAndView examineInput(Integer netid,HttpServletRequest request,HttpServletResponse response) throws IOException {
-		System.out.println("!!!!!!!!!!!!!");
-		Map map=new HashMap<String, Object>();
-		map.put("netid", netid);
-//		request.getRequestDispatcher("/admin/netsign/examine.jsp");
-//		response.sendRedirect("/admin/netsign/examine.jsp");
-		ModelAndView mav=new ModelAndView("admin/netsign/examine");
-		return mav;
-	}
 	
+	@RequestMapping("examineInput")
+	public Map netsiginInput(Integer netid) throws IOException {
+		Map map=new HashMap<String, Object>();
+		Netsign netsign = netsignServiceImpl.findByNetid(netid);
+		map.put("netsign", netsign);
+		return map;
+	}
 	
 	
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,8 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div id="app">
-uname<INPUT TYPE="text" NAME="uname">action<INPUT TYPE="text" NAME="">
-<input type="button" @click="get()" value="Query">
+起始日期<INPUT TYPE="text" NAME="startDate">终止日期<INPUT TYPE="text" NAME="endDate">
+<input type="button" @click="get()" value="查询">
 <TABLE border="1" width="100%">
 <TR>
 	<TD>网签id</TD>
@@ -30,10 +32,10 @@ uname<INPUT TYPE="text" NAME="uname">action<INPUT TYPE="text" NAME="">
 </TABLE>
 <TABLE border="1" width="100%">
 <TR>
-	<TD><button @click="first()">First</button></TD>
-	<TD><button @click="next()">Next</button></TD>
-	<TD><button @click="before()">Before</button></TD>
-	<TD><button @click="end()">End</button></TD>
+	<TD><button @click="first()">首页</button></TD>
+	<TD><button @click="next()">上一页</button></TD>
+	<TD><button @click="before()">下一页</button></TD>
+	<TD><button @click="end()">末页</button></TD>
 	<TD>
 	第<INPUT TYPE="text" NAME="pageNow" id="pageNow" v-model="pageNow" size="1">页
 	一页<INPUT TYPE="text" NAME="limit" v-model="limit" size="1">条  {{json.page.pageNow}}/{{json.page.pageCount}} 总共{{json.page.count}}条记录</TD>
@@ -92,7 +94,7 @@ uname<INPUT TYPE="text" NAME="uname">action<INPUT TYPE="text" NAME="">
 	            	this.get();
 	            },
 	            examine:function(netid){
-	            	window.location.href ="<%=basePath%>admin/netsign/examine.jsp?netid=1";
+	            	window.location.href ="<%=basePath%>admin/netsign/examine.jsp?netid="+netid;
 		        }
 	            
 	        }

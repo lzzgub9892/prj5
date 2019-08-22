@@ -28,6 +28,7 @@ public class House {
     private Gainingmethod gainingmethod;
     private Housestatus housestatus;
     
+    
     private List<Publicbuildings> publicbuildingss=new ArrayList<Publicbuildings>();
     
     
