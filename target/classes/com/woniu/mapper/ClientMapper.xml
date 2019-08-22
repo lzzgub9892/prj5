@@ -13,6 +13,7 @@
     <result column="idcard" jdbcType="VARCHAR" property="idcard" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="zid" jdbcType="INTEGER" property="zid" />
+    <collection property="serviceshares" column="clientid" select="com.woniu.mapper.ServiceshareMapper.findByClientId"></collection>
   </resultMap>
   <select id="findByNameAndIdcard" resultMap="BaseResultMap">
   	SELECT * FROM CLIENT WHERE clientname=#{clientname} AND idcard=#{idcard}
