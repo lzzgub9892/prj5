@@ -10,6 +10,9 @@
     <id column="sharetypeid" jdbcType="INTEGER" property="sharetypeid" />
     <result column="sharetype" jdbcType="VARCHAR" property="sharetype" />
   </resultMap>
+  <select id="findBySharetypeid" resultMap="BaseResultMap">
+  		select*from sharetype where sharetypeid=#{sharetypeid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
+	
+	private List<Existmortgage> existmortgages=new ArrayList<Existmortgage>();
+	
+	
+	
+	public List<Existmortgage> getExistmortgages() {
+		return existmortgages;
+	}
+
+	public void setExistmortgages(List<Existmortgage> existmortgages) {
+		this.existmortgages = existmortgages;
+	}
+
 	private List<Ownership> ownerships=new ArrayList<Ownership>();
 	
 	

@@ -14,6 +14,7 @@
     <result column="share" jdbcType="INTEGER" property="share" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="sharetypeid" jdbcType="INTEGER" property="sharetypeid" />
+    <collection property="sharetype" column="sharetypeid" select="com.woniu.mapper.SharetypeMapper.findBySharetypeid"></collection>
   </resultMap>
   <select id="findByClientId" resultMap="BaseResultMap">
   	SELECT * FROM serviceshare WHERE clientid=#{clientid}

@@ -250,7 +250,7 @@ body {
         <td height="25" colspan="5" bordercolor="#6666FF"><div align="center" class="title">房屋登记簿&nbsp;他项权利部分（现房抵押）</div></td>
       </tr>
       <tr align="center" class=list>
-        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：20081001</div></td>
+        <td colspan="5" bordercolor="#6666FF"><div align="left">房屋编号：${room.roomid }</div></td>
       </tr>
       <tr class=toplist>
         <td width="245" bordercolor="#6666FF"><div align="center">内容\序号 </div></td>
@@ -259,89 +259,83 @@ body {
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+       		 <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.service.servicenumber }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">一般抵押/最高抵押</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">一般抵押</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.generalmortgage }</td>
+       		</c:forEach>
+      </tr>
+      <tr class=toplist>
+        <td bordercolor="#6666FF">最高抵押</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.maxmortgage }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">抵押权人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.mortgagee }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">抵押人/债务人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">抵押人</td>
+       <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.mortgager }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">被担保主债权数额（最高债权数额）</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">债务人</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.debtor }</td>
+       		</c:forEach>
+      </tr>
+      <tr class=toplist>
+        <td bordercolor="#6666FF">最高债权数额</td>
+        <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.maxclaim }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">担保范围</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.scope }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">债务履行期限（债权确定期间）</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">他项权证号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">债务履行期限</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.returntime }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
         <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.registertime }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">终审人</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.userinfo.uname }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">附记</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.descript }</td>
+       		</c:forEach>
       </tr>
       <tr class=toplist>
-        <td bordercolor="#6666FF">最高债权确定事实和数额</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
+        <td bordercolor="#6666FF">取消业务宗号</td>
+         <c:forEach items="${room.existmortgages }" var="existmortgage">
+        		<td bordercolor="#6666FF">${existmortgage.service.servicenumber }</td>
+       		</c:forEach>
       </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">抵押注销业务宗号</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">登记时间</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
-      <tr class=toplist>
-        <td bordercolor="#6666FF">终审人/登簿人</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-        <td bordercolor="#6666FF">&nbsp;</td>
-      </tr>
+     
       <tr align="center" class=list>
         <td height="25" colspan="5" valign="top" bordercolor="#6666FF" class="toplist_text">附记：</td>
       </tr>

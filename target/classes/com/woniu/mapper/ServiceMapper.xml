@@ -20,6 +20,9 @@
     <result column="contractcopy" jdbcType="VARCHAR" property="contractcopy" />
     <result column="taxcopy" jdbcType="VARCHAR" property="taxcopy" />
   </resultMap>
+  <select id="findByServiceid" resultMap="BaseResultMap">
+  		select*from service where serviceid=#{serviceid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
