@@ -12,16 +12,16 @@ import com.woniu.entity.House;
 import com.woniu.service.IhouseService;
 
 @RestController
-@RequestMapping("houses")
+@RequestMapping("admin/houses")
 public class HouseController {
-
+ 
 	@Resource
 	private IhouseService houseServiceImpl;
 	
 	@RequestMapping("/findall")
 	@ResponseBody
 	public List findall() {
-		List<House> list = houseServiceImpl.findall();
+		List list = houseServiceImpl.findall();
 		return list;
 	}
 }

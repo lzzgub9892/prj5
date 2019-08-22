@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
-
-
 <head>
 <link rel="stylesheet" href="css/main.css">
 <script language=JavaScript src="js/comm.js"></script>
@@ -17,7 +16,7 @@ body {
 </style>
 </head>
 <body>
-<form name="form_list" method="post" action="loupan.htm">
+<form name="form_list" method="post" action="loupan.jsp">
 <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td width="20%" bordercolor="#6666FF">楼盘名称</td>
