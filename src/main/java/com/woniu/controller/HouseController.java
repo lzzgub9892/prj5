@@ -20,8 +20,8 @@ public class HouseController {
 	
 	@RequestMapping("/findall")
 	@ResponseBody
-	public List<House> findall() {
-		List<House> list = houseServiceImpl.findall();
+	public List findall() {
+		List list = houseServiceImpl.findall();
 		return list;
 	}
 }
