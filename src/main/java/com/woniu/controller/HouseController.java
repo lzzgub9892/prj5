@@ -14,7 +14,7 @@ import com.woniu.service.IhouseService;
 @RestController
 @RequestMapping("admin/houses")
 public class HouseController {
-
+ 
 	@Resource
 	private IhouseService houseServiceImpl;
 	
