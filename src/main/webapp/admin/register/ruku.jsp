@@ -19,7 +19,7 @@ body {
 </head>
 <body>
 ${error }
-<form action="save" method="post">
+<form action="save" method="post" enctype="multipart/form-data">
 <table width="738" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td colspan="5" bordercolor="#6666FF"><div align="left">申请人基本信息：</div></td>
@@ -136,33 +136,33 @@ ${error }
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="2" bordercolor="#6666FF"><span class="STYLE2">登记申请书一份：</span></td>
     <td colspan="4" bordercolor="#6666FF"><label>
-      <input name="application" type="file" size="40">
+      <input name="file" type="file" size="40">
       <input name="scan" type="button" id="scan" value="扫描/拍照">
     </label></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="2" bordercolor="#6666FF"><span class="STYLE2">伍学名身份证复印件一份：</span></td>
-    <td colspan="4" bordercolor="#6666FF"><input name="idcopy" type="file" size="40">
+    <td colspan="4" bordercolor="#6666FF"><input name="file" type="file" size="40">
       <input name="scan2" type="button" id="scan2" value="扫描/拍照"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="2" bordercolor="#6666FF"><span class="STYLE2">伍学名一寸照片一张：</span></td>
-    <td colspan="4" bordercolor="#6666FF"><input name="photo" type="file" size="40">
+    <td colspan="4" bordercolor="#6666FF"><input name="file" type="file" size="40">
       <input name="scan3" type="button" id="scan3" value="扫描/拍照"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="2" bordercolor="#6666FF"><span class="STYLE2">购房发票复印件一份：</span></td>
-    <td colspan="4" bordercolor="#6666FF"><input name="purchasecopy" type="file" size="40">
+    <td colspan="4" bordercolor="#6666FF"><input name="file" type="file" size="40">
       <input name="scan4" type="button" id="scan4" value="扫描/拍照"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="2" bordercolor="#6666FF"><span class="STYLE2">购房合同复印件（已备案）一份：</span></td>
-    <td colspan="4" bordercolor="#6666FF"><input name="contractcopy" type="file" size="40">
+    <td colspan="4" bordercolor="#6666FF"><input name="file" type="file" size="40">
       <input name="scan5" type="button" id="scan5" value="扫描/拍照"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="2" bordercolor="#6666FF"><span class="STYLE2">契税完税证复印件一份：</span></td>
-    <td colspan="4" bordercolor="#6666FF"><input name="taxcopy" type="file" size="40">
+    <td colspan="4" bordercolor="#6666FF"><input name="file" type="file" size="40">
       <input name="scan6" type="button" id="scan6" value="扫描/拍照"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>

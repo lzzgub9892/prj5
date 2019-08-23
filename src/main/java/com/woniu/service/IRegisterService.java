@@ -6,6 +6,6 @@ import com.woniu.entity.Servicesharetemporary;
 public interface IRegisterService {
 	
 	
-	void save(Registertemporary regi,Servicesharetemporary sst);
+	void save(Registertemporary regi,Servicesharetemporary sst,String info);
 
 }

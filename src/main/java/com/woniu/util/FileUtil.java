@@ -16,13 +16,16 @@ public class FileUtil {
      * @param file
      * @return
      */
-    public static String uploadFile(MultipartFile file){
+    public static String uploadFile(MultipartFile file,String path){
     	String newname = UUID.randomUUID().toString();
         String fileName = file.getOriginalFilename();
-        String filePath = "D:\\repository\\";
-        File targetFile = new File(filePath);
+        int wezhi = fileName.lastIndexOf(".");
+        String str = fileName.substring(wezhi);
+        newname = newname+str;
+        //String filePath = "D:\\img\\";
+        File targetFile = new File(path);
         //第一步：判断文件是否为空
-        if(file.isEmpty())return fileName+"文件为空";
+        if(file.isEmpty())return null;
         //第二步：判断目录是否存在   不存在：创建目录
         if(!targetFile.exists()){
             targetFile.mkdirs();
@@ -30,7 +33,7 @@ public class FileUtil {
         //第三部：通过输出流将文件写入硬盘文件夹并关闭流
         BufferedOutputStream stream = null;
         try {
-            stream = new BufferedOutputStream(new FileOutputStream(filePath+fileName));
+            stream = new BufferedOutputStream(new FileOutputStream(path+newname));
             stream.write(file.getBytes());
             stream.flush();
         }catch (IOException e){
@@ -42,7 +45,7 @@ public class FileUtil {
                 e.printStackTrace();
             }
         }
-        return fileName+"上传成功";
+        return newname;
     }
 
 

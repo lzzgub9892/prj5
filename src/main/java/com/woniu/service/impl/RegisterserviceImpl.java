@@ -25,7 +25,7 @@ public class RegisterserviceImpl implements IRegisterService {
 	
 
 	@Override
-	public void save(Registertemporary regi, Servicesharetemporary sst) {
+	public void save(Registertemporary regi, Servicesharetemporary sst,String info) {
 		// TODO Auto-generated method stub
 		registertemporaryMapper.insert(regi);
 		
