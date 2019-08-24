@@ -7,7 +7,22 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface RoomMapper {
-//  这个方法是通过楼盘名称、楼栋编号、房屋编号查到对应的房屋
+	/**
+	    * 这个方法是通过起始日期、结束日期、土地性质找出房屋总数
+	 * @param startdate
+	 * @param enddate
+	 * @param rid
+	 * @return
+	 */
+	Long countByRoomtype(String startdate,String enddate,Integer rid);
+	
+	/**
+	 * 这个方法是通过楼盘名称、楼栋编号、房屋编号查到对应的房屋
+	 * @param hname
+	 * @param buildingname
+	 * @param roomnumber
+	 * @return
+	 */
 	Room findRoomidByAllName(String hname,String buildingname,String roomnumber);
 
 	/**

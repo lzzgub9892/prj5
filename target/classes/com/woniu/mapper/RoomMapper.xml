@@ -20,6 +20,19 @@
   	<collection property="closeregistrations" column="roomid" select="com.woniu.mapper.CloseregistrationMapper.findByRoomid"></collection>
   	<collection property="dissentingregistrations" column="roomid" select="com.woniu.mapper.DissentingregistrationMapper.findByRoomid"></collection>
   </resultMap>
+  
+  <select id="countByRoomtype" resultType="java.lang.Long">
+  	SELECT COUNT(*) FROM room r WHERE EXISTS(	
+		SELECT buildingid FROM building b WHERE EXISTS(
+			SELECT hid FROM house h WHERE
+			r.buildingid=b.buildingid AND
+			b.hid=h.hid AND
+			h.hdate BETWEEN #{startdate} AND #{enddate}
+			AND rid=#{rid}
+		)
+	)
+  </select>
+  
   <select id="findRoomidByAllName" resultMap="BaseResultMap">
   	SELECT * FROM room r WHERE EXISTS(	
 		SELECT buildingid FROM building b WHERE EXISTS(
