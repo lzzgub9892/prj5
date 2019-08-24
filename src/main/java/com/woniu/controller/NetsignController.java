@@ -1,7 +1,9 @@
 package com.woniu.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,14 +36,19 @@ public class NetsignController {
 	
 	
 	@RequestMapping("register")
-	public String register(NetsignObj netsignObj) {
-		netsignServiceImpl.save(netsignObj);
-		return null;
+	public Map register(NetsignObj netsignObj) {
+		Map<String, Object> map=new HashMap();
+		try {
+			netsignServiceImpl.save(netsignObj);
+		} catch (Exception e) {
+			map.put("message", e.getMessage());
+		}
+		return map;
 	}
 	
 	@RequestMapping("findByPage")
-	public Map findByPage(PageBean pageBean) {
-		Map map=new HashMap<String, Object>();
+	public Map findByPage(PageBean pageBean) throws ParseException {
+		Map<String, Object> map=new HashMap();
 		List<Netsign> list = netsignServiceImpl.findByPage(pageBean);
 		map.put("list", list);
 		map.put("page", pageBean);
@@ -50,12 +57,30 @@ public class NetsignController {
 	
 	
 	@RequestMapping("examineInput")
-	public Map netsiginInput(Integer netid) throws IOException {
-		Map map=new HashMap<String, Object>();
+	public Map netsiginInput(Integer netid){
+		Map<String, Object> map=new HashMap();
 		Netsign netsign = netsignServiceImpl.findByNetid(netid);
 		map.put("netsign", netsign);
 		return map;
 	}
+	
+	@RequestMapping("examine")
+	public String examine(Integer netid){
+		netsignServiceImpl.success(netid);
+		return null;
+	}
+	
+	@RequestMapping("query")
+	public Map query(String netnumber){
+		Netsign netsign = netsignServiceImpl.findByNetnumber(netnumber);
+		Map<String, Object> map=new HashMap();
+		map.put("netsign", netsign);
+		if(netsign==null) {
+			map.put("message", "该网签不存在");
+		}
+		return map;
+	}
+	
 	
 	
 }

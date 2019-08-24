@@ -86,14 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr align="center" class=list>
     <td colspan="6" bordercolor="#6666FF">&nbsp;</td>
   </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td colspan="6" align="center" bordercolor="#6666FF">
-      <input name="dengjibu" type="button" value="通过" @click="examine()">      &nbsp;
-      <input type="button" name="Submit" value="取消" @click="cancel()"></td>
-    </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td colspan="6" align="center" bordercolor="#6666FF">&nbsp;</td>
-  </tr>
 </table>
 	
 </div>

@@ -1,5 +1,6 @@
 package com.woniu.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.woniu.entity.Netsign;
@@ -16,7 +17,9 @@ public interface INetsignService {
 	//查询网签状态
 	Netsign findByNetid(Integer netid);
 	
-	List<Netsign> findByPage(PageBean pageBean);
+	List<Netsign> findByPage(PageBean pageBean) throws ParseException;
+	
+	Netsign findByNetnumber(String netnumber);
 	
 	
 	
