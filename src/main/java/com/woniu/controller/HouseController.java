@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,13 +29,13 @@ public class HouseController {
 		List list = houseServiceImpl.findall();
 		return list;
 	}
-	@RequestMapping("/findbuilding")
-	@ResponseBody
-    public Map findbuilding(@PathVariable int hid) {
-		Map map=new HashMap ();
+	@RequestMapping("findbuilding")
+    public Map findbuilding(Integer hid) {
+		Map<String,Object> map=new HashMap<String, Object>();
+		int id = Integer.valueOf(hid).intValue();
 		House house = houseServiceImpl.findone(hid);
 //		根据前台传过来的hid 查出楼盘对应的楼栋信息
-		Building building = buildingServiceImpl.findbyhid(hid);
+		List<Building> building = buildingServiceImpl.findbyhid(hid);
 		map.put("house", house);
 		map.put("building", building);
 		return map;

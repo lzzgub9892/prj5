@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +28,7 @@ body {
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312"></head>
 <body>
 <div id="app">
-<form action="fenhu.htm" method="post" name="form_info" target="main">
+<form action="<%=basePath%>admin/house/fenhu.jsp" method="post" name="form_info" >
 <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td colspan="6" bordercolor="#6666FF"><div align="left">楼盘基本信息：</div></td>
@@ -32,41 +36,41 @@ body {
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">建设单位：</td>
     <td bordercolor="#6666FF">
-      {{house.company}}</td>
+      {{house.company.cname}}</td>
     <td bordercolor="#6666FF">项目名称：</td>
-    <td bordercolor="#6666FF">{{}}</td>
+    <td bordercolor="#6666FF">{{house.hname}}</td>
     <td bordercolor="#6666FF">土地用途：</td>
-    <td align="center" valign="middle" bordercolor="#6666FF">住宅</td>
+    <td align="center" valign="middle" bordercolor="#6666FF">{{house.landuse.lname}}</td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">土地权属：</td>
-    <td bordercolor="#6666FF">国有</td>
+    <td bordercolor="#6666FF">{{house.landownership.oname}}</td>
     <td bordercolor="#6666FF">房屋性质：</td>
-    <td bordercolor="#6666FF">经济适用房</td>
+    <td bordercolor="#6666FF">{{house.roomtype.rname}}</td>
     <td bordercolor="#6666FF">设计用途：</td>
-    <td align="center" valign="middle" bordercolor="#6666FF">住宅</td>
+    <td align="center" valign="middle" bordercolor="#6666FF">{{house.designpurposes.dname}}</td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td width="100" bordercolor="#6666FF">区：</td>
-    <td width="145" bordercolor="#6666FF">新城区</td>
+    <td width="145" bordercolor="#6666FF">{{house.zone.zname}}</td>
     <td width="100" bordercolor="#6666FF">建筑区划：</td>
-    <td width="145" bordercolor="#6666FF">皇城路</td>
+    <td width="145" bordercolor="#6666FF">{{house.buildingarea.bname}}</td>
     <td width="100" bordercolor="#6666FF">丘地号：</td>
-    <td bordercolor="#6666FF">-</td>
+    <td bordercolor="#6666FF">---</td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">土地证号：</td>
-    <td bordercolor="#6666FF">2233</td>
+    <td bordercolor="#6666FF">{{house.landnumber.lnname}}</td>
     <td bordercolor="#6666FF">房屋结构：</td>
-    <td bordercolor="#6666FF">砖混</td>
+    <td bordercolor="#6666FF">{{house.buildingstructure.bsname}}</td>
     <td bordercolor="#6666FF">取得方式：</td>
-    <td bordercolor="#6666FF">拍卖</td>
+    <td bordercolor="#6666FF">{{house.gainingmethod.gname}}</td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">房屋坐落：</td>
-    <td colspan="3" bordercolor="#6666FF">西安市新城区皇城东路6号</td>
+    <td colspan="3" bordercolor="#6666FF">{{house.location}}</td>
     <td bordercolor="#6666FF">分户图：</td>
-    <td bordercolor="#6666FF">-</td>
+    <td bordercolor="#6666FF">---</td>
   </tr>
   
   <tr align="center" class=list>
@@ -83,62 +87,15 @@ body {
     <td bordercolor="#6666FF"><div align="center">幢总面积（平方）</div></td>
     <td bordercolor="#6666FF"><div align="center">备注</div></td>
   </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">一号楼</td>
-    <td bordercolor="#6666FF">1234</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">48</td>
-    <td bordercolor="#6666FF">3000</td>
-    <td bordercolor="#6666FF">普通公寓</td>
+  <tr v-for="b in building" class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
+    <td bordercolor="#6666FF">{{b.buildingname}}</td>
+    <td bordercolor="#6666FF">{{b.buildingnumber}}</td>
+    <td bordercolor="#6666FF">{{b.floor}}</td>
+    <td bordercolor="#6666FF">{{b.count}}</td>
+    <td bordercolor="#6666FF">{{b.totalarea}}</td>
+    <td bordercolor="#6666FF">{{b.descripe}}</td>
   </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">二号楼</td>
-    <td bordercolor="#6666FF">8888</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">64</td>
-    <td bordercolor="#6666FF">3600</td>
-    <td bordercolor="#6666FF">精装公寓</td>
-  </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">三号楼</td>
-    <td bordercolor="#6666FF">8888</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">64</td>
-    <td bordercolor="#6666FF">3600</td>
-    <td bordercolor="#6666FF">精装公寓</td>
-  </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">四号楼</td>
-    <td bordercolor="#6666FF">8888</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">64</td>
-    <td bordercolor="#6666FF">3600</td>
-    <td bordercolor="#6666FF">精装公寓</td>
-  </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">五号楼</td>
-    <td bordercolor="#6666FF">8888</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">64</td>
-    <td bordercolor="#6666FF">3600</td>
-    <td bordercolor="#6666FF">精装公寓</td>
-  </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">六号楼</td>
-    <td bordercolor="#6666FF">8888</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">64</td>
-    <td bordercolor="#6666FF">3600</td>
-    <td bordercolor="#6666FF">精装公寓</td>
-  </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_info.submit();">
-    <td bordercolor="#6666FF">综合楼</td>
-    <td bordercolor="#6666FF">8888</td>
-    <td bordercolor="#6666FF">8</td>
-    <td bordercolor="#6666FF">64</td>
-    <td bordercolor="#6666FF">3600</td>
-    <td bordercolor="#6666FF">办公</td>
-  </tr>
+  
   <tr align="center" class=list>
     <td colspan="6" bordercolor="#6666FF">&nbsp;</td>
   </tr>

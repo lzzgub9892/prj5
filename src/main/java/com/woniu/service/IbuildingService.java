@@ -6,5 +6,5 @@ import com.woniu.entity.Building;
 
 public interface IbuildingService {
    List<Building> findall();
-   Building findbyhid(int hid);
+   List<Building> findbyhid(int hid);
 }

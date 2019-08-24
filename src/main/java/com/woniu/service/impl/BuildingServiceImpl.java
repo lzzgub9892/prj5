@@ -20,9 +20,10 @@ public class BuildingServiceImpl implements IbuildingService {
 		return buildingMapper.selectByExample(null);
 	}
 	@Override
-	public Building findbyhid(int hid) {
+	public List<Building> findbyhid(int hid) {
 		// TODO Auto-generated method stub
 		return buildingMapper.findByhid(hid);
 	}
+	
 
 }

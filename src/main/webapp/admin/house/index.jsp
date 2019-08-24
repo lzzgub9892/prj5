@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 
 <html>
@@ -20,7 +24,7 @@ body {
 </head>
 <body>
 <div id="app">
-<form name="form_list" method="post" action="loupan.jsp">
+<form name="form_list" method="post" action="">
 <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td width="20%" bordercolor="#6666FF">楼盘名称</td>
@@ -32,7 +36,7 @@ body {
     <td width="20%" bordercolor="#6666FF">{{l.hname}}</td>
     <td width="15%" align="center" bordercolor="#6666FF">楼盘信息</td>
     <td width="20%" align="center" bordercolor="#6666FF">23333</td>
-    <td width="15%" align="center" bordercolor="#6666FF">{{l.housestatus.housestatus}}</td>
+    <td width="15%" align="center" bordercolor="#6666FF">{{1}}</td>
   </tr>
 </table>
 </form>
@@ -65,21 +69,8 @@ window.onload = function(){
                 });
                 },
                 filea:function(id){
-                    var hid=id;
-                    $.ajax({
-    					url: "findbuilding",
-    					dataType: 'json',
-    					type: 'post',
-    					data:{
-    						hid:hid
-    					},
-    					success:function(data){
-    						console.log(data)
-    					},
-    					error:function(err){
-    						console.log(err)
-    					}
-    				});
+                    var hid=id
+                    window.location.href ="<%=basePath%>admin/house/loupan.jsp?hid="+hid;
                     }
 	        }
 	    });
