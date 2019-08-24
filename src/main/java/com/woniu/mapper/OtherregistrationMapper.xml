@@ -26,6 +26,10 @@
   <select id="findByRoomid" resultMap="BaseResultMap">
   	select*from otherregistration where roomid=#{roomid}
   </select>
+  
+  <delete id="deleteByRoomid" parameterType="java.lang.Integer">
+  		delete from otherregistration where roomid=#{roomid}
+  </delete>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

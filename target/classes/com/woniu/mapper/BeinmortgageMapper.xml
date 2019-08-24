@@ -30,6 +30,10 @@
   <select id="findByRoomid" resultMap="BaseResultMap">
   		select*from beinmortgage where roomid=#{roomid}
   </select>
+  
+   <delete id="deleteByRoomid" parameterType="java.lang.Integer">
+  		delete from beinmortgage where roomid=#{roomid}
+  </delete>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

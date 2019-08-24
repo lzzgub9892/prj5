@@ -20,6 +20,11 @@
   <select id="findByRoomId" resultMap="BaseResultMap">
   		select*from ownership where roomid=#{roomid}
   </select>
+  
+  <delete id="deleteByRoomid" parameterType="java.lang.Integer">
+  		delete from ownership where roomid=#{roomid}
+  </delete>
+ 
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

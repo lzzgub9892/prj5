@@ -20,7 +20,7 @@ body {
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312"></head>
 <body>
-<form name="form_list" method="post" action="findByRoomId">
+<form name="form_list" method="post" action="findAll">
 	
   <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
     <tr class=list align="center">
@@ -33,7 +33,7 @@ body {
       <td align="center" bordercolor="#6666FF">查看</td>
     </tr>
     <c:forEach items="${roomList }" var="room">
-	    <tr class=toplist onMouseOver=mouseovertr(this) onMouseOut=mouseouttr(this) onClick="document.form_list.submit();">
+	    <tr class=toplist onMouseOver=mouseovertr(this) onMouseOut=mouseouttr(this) >
 	      <td bordercolor="#6666FF">${room.roomid }</td>
 	      <td bordercolor="#6666FF">
 	      							${room.building.house.zone.city.cname }
@@ -51,13 +51,50 @@ body {
 	      <td bordercolor="#6666FF">${room.ownerships[0].registertime }</td>
 	      <td bordercolor="#6666FF">${room.ownerships[0].userinfo.uname }</td>
 	       <td bordercolor="#6666FF">
-	       	<a href="findByRoomId?roomid=${room.roomid }" style="color: blue">查看详情</a>
+	       	<a href="findByRoomId?roomid=${room.roomid }" style="color: blue">${room.ownerships[0]==null?'已灭籍':'查看详情'}</a>
 	       </td>
 	     
 	    </tr>
     </c:forEach>
   </table>
-  
+  <TABLE border="1" width="100%">
+	<TR>
+		<td><a href="javascript:frist(1)">首页</a></td>
+		<td><a href="javascript:prev(${page.pageNow })">上一页</a></td>
+		<td><a href="javascript:next(${page.pageNow },${page.pageCount })">下一页</a></td>
+		<td><a href="javascript:last(${page.pageCount })">尾页</a></td>
+		<TD>
+		第<INPUT TYPE="text" NAME="pageNow" id="pageNow" value="${page.pageNow }" size="1">页
+		一页<INPUT TYPE="text" NAME="limit" value=${page.limit } size="1">条  ${page.pageNow }/${page.pageCount } 总共${page.count }条记录</TD>
+		<TD><input type="submit" value="go"></TD>
+</TR>
+</TABLE>
 </form>
 </body>
 </html>
+<script>
+	function frist(){
+		document.getElementById("pageNow").value= 1;
+		document.forms[0].submit();
+	}
+	function prev(pageNow){
+		if(pageNow<=1){
+			document.getElementById("pageNow").value= 1;
+		}else{
+			document.getElementById("pageNow").value= pageNow-1;
+		}
+		document.forms[0].submit();
+	}
+	function next(pageNow,pageCount){
+		if(pageNow>=pageCount){
+			document.getElementById("pageNow").value= pageCount;
+		}else{
+			document.getElementById("pageNow").value= pageNow+1;
+		}
+		document.forms[0].submit();
+	}
+	function last(pageCount){
+		document.getElementById("pageNow").value= pageCount;
+		document.forms[0].submit();
+	}
+</script>
