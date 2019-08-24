@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.woniu.entity.Registertemporary;
 import com.woniu.entity.Servicesharetemporary;
+import com.woniu.entity.Userinfo;
 import com.woniu.service.IRegisterService;
 import com.woniu.service.impl.RegisterserviceImpl;
 import com.woniu.util.FileUtil;
@@ -77,10 +79,21 @@ public class RegisterController {
         regi.setPurchasecopy(infos[4]);
         regi.setContractcopy(infos[5]);
         regi.setTaxcopy(infos[6]);
-        
+        regi.setServicetypeid(1);
 		
 		registerservice.save(regi, sst,info);
-		return "admin/register/ruku"; 
+		return "redirect:tolistruku"; 
+	}
+	
+	@RequestMapping("tolistruku")
+	public String findAll(ModelMap map,HttpSession session) {
+		List<Registertemporary> regis = registerservice.findAll();
+		
+		map.put("regis", regis);
+		Userinfo info = (Userinfo) session.getAttribute("info");
+		String user = info.getUname();
+		map.put("user", user);
+		return "admin/register/list_ruku";
 	}
 	
 	
