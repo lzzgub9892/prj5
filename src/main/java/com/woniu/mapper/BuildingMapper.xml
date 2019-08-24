@@ -17,6 +17,9 @@
     <result column="hid" jdbcType="INTEGER" property="hid" />
     <collection property="house" column="hid" select="com.woniu.mapper.HouseMapper.selectByPrimaryKey"></collection>
   </resultMap>
+  <select id="findByhid" resultMap="BaseResultMap">
+  select * from building where hid=${hid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

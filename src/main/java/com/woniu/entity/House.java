@@ -1,11 +1,27 @@
 package com.woniu.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class House {
+public class House implements Serializable{
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+    //定义一个楼栋表的集合
+//    private Building building;
+//	
+//	public Building getBuilding() {
+//		return building;
+//	}
+//
+//	public void setBuilding(Building building) {
+//		this.building = building;
+//	}
+
+	@Override
 	public String toString() {
 		return "House [company=" + company + ", landuse=" + landuse + ", landownership=" + landownership + ", roomtype="
 				+ roomtype + ", designpurposes=" + designpurposes + ", zone=" + zone + ", buildingarea=" + buildingarea

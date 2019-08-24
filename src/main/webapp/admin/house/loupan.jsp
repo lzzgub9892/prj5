@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/main.css">
 <script language=JavaScript src="js/comm.js"></script>
 <style type="text/css">
@@ -20,6 +23,7 @@ body {
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312"></head>
 <body>
+<div id="app">
 <form action="fenhu.htm" method="post" name="form_info" target="main">
 <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
@@ -28,9 +32,9 @@ body {
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">建设单位：</td>
     <td bordercolor="#6666FF">
-      云帆公司</td>
+      {{house.company}}</td>
     <td bordercolor="#6666FF">项目名称：</td>
-    <td bordercolor="#6666FF">空中花园</td>
+    <td bordercolor="#6666FF">{{}}</td>
     <td bordercolor="#6666FF">土地用途：</td>
     <td align="center" valign="middle" bordercolor="#6666FF">住宅</td>
   </tr>
@@ -144,5 +148,49 @@ body {
   </tr>
 </table>
 </form>
+</div>
 </body>
+<script language=JavaScript src="js/comm.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            map:'',
+            house:'',
+            building:''
+        },
+        mounted:function(){
+        	this.get();
+        },
+        methods:{
+            get:function(){
+            	this.$http({
+                	method:'post',
+                	url:'findbuilding',
+                	emulateJSON:true, 
+                	params:{
+                		hid:theRequest.hid
+                	},	
+                }).then(function(res){
+                	 this.map=res.body;
+                	 this.house=this.map.house;
+                	 this.building=this.map.building;
+                },function(){
+                    console.log('请求失败处理');
+                });
+                }
+	        }
+	    });
+	}
+</script>
 </html>

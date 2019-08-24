@@ -34,6 +34,8 @@
     <collection property="gainingmethod" column="gid" select="com.woniu.mapper.GainingmethodMapper.selectByPrimaryKey"></collection>
     <collection property="housestatus" column="housestatusid" select="com.woniu.mapper.HousestatusMapper.selectByPrimaryKey"></collection>
  	<collection property="publicbuildingss" column="hid" select="com.woniu.mapper.PublicbuildingsMapper.findByHid"></collection>
+    <!-- 通过hid查出外键关联的Building 表,用于楼盘对应楼栋数据的回显 -->
+    <!-- <collection property="building" column="hid" select="com.woniu.mapper.BuildingMapper.findByhid"></collection> -->
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

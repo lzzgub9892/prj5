@@ -34,7 +34,7 @@ public class HouseServiceImpl implements IhouseService {
 	@Override
 	public House findone(int hid) {
 		// TODO Auto-generated method stub
-		return null;
+		return houseMapper.selectByPrimaryKey(hid);
 	}
 
 	@Override
