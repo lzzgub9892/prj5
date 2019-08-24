@@ -27,6 +27,7 @@
     <result column="contractcopy" jdbcType="VARCHAR" property="contractcopy" />
     <result column="taxcopy" jdbcType="VARCHAR" property="taxcopy" />
     <result column="servicetypeid" jdbcType="INTEGER" property="servicetypeid" />
+    <collection property="servicetype" column="servicetypeid" select="com.woniu.mapper.ServicetypeMapper.findByRegisterTemporary"></collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
