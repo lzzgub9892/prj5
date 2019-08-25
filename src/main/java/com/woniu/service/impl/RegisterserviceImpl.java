@@ -1,5 +1,7 @@
 package com.woniu.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -32,6 +34,21 @@ public class RegisterserviceImpl implements IRegisterService {
 		System.out.println(regi.getRtid()+"=============================================");
 		sst.setRtid(regi.getRtid());
 		servicesharetemporaryMapper.insertSelective(sst);
+	}
+
+
+	@Override
+	public List<Registertemporary> findAll() {
+		// TODO Auto-generated method stub
+		List<Registertemporary> list = registertemporaryMapper.selectByExample(null);
+		return list;
+	}
+
+
+	@Override
+	public Registertemporary findOne(Integer id) {
+		// TODO Auto-generated method stub
+		return registertemporaryMapper.selectByPrimaryKey(id);
 	}
 
 }

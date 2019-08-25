@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.woniu.entity.Servicetype;
+import com.woniu.entity.ServicetypeExample;
 import com.woniu.mapper.ServicetypeMapper;
 import com.woniu.service.IServicetypeService;
 
@@ -25,5 +26,7 @@ public class ServicetypeServiceImpl implements IServicetypeService {
 	public List<Servicetype> findAll() {
 		return servicetypeMapper.selectByExample(null);
 	}
+
+	
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,7 +16,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.woniu.entity.Registertemporary;
 import com.woniu.entity.Servicesharetemporary;
+import com.woniu.entity.Userinfo;
 import com.woniu.service.IRegisterService;
+import com.woniu.service.IServiceShareTemporaryService;
 import com.woniu.service.impl.RegisterserviceImpl;
 import com.woniu.util.FileUtil;
 
@@ -25,8 +28,10 @@ public class RegisterController {
 	
 	@Resource
 	private IRegisterService registerservice;
+	@Resource
+	private IServiceShareTemporaryService serviceShareTemporaryService;
 	
-	
+	//存储临时登记数据
 	@RequestMapping("save")
 	public String save(Registertemporary regi, Servicesharetemporary sst,HttpServletRequest req) {
 		System.out.println("RegisterController.save()");
@@ -77,12 +82,35 @@ public class RegisterController {
         regi.setPurchasecopy(infos[4]);
         regi.setContractcopy(infos[5]);
         regi.setTaxcopy(infos[6]);
-        
+        regi.setServicetypeid(1);
 		
 		registerservice.save(regi, sst,info);
-		return "admin/register/ruku"; 
+		return "redirect:tolistruku"; 
 	}
 	
+	//展示临时数据
+	@RequestMapping("tolistruku")
+	public String findAll(ModelMap map,HttpSession session) {
+		List<Registertemporary> regis = registerservice.findAll();
+		
+		map.put("regis", regis);
+		Userinfo info = (Userinfo) session.getAttribute("info");
+		String user = info.getUname();
+		map.put("user", user);
+		return "admin/register/list_ruku";
+	}
+	
+	//查询临时数据，并展示在审核页面
+	@RequestMapping("toshenhe")
+	public String showShenHe(Integer rtid,ModelMap map) {
+		System.out.println(rtid);
+		Registertemporary regi = registerservice.findOne(rtid);
+		List<Servicesharetemporary> sstss = serviceShareTemporaryService.findByRegistertemporary(rtid);
+		System.out.println(sstss.size()+"*********************************************");
+		map.put("regi", regi);
+		map.put("sstss", sstss);
+		return "admin/register/shenhe";
+	}
 	
 }
 
