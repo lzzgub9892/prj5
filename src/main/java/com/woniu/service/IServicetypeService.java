@@ -9,4 +9,6 @@ public interface IServicetypeService {
 	List<Servicetype> findByPid(Integer pid);
 	
 	List<Servicetype> findAll();
+	
+	
 }

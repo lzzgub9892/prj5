@@ -44,4 +44,11 @@ public class RegisterserviceImpl implements IRegisterService {
 		return list;
 	}
 
+
+	@Override
+	public Registertemporary findOne(Integer id) {
+		// TODO Auto-generated method stub
+		return registertemporaryMapper.selectByPrimaryKey(id);
+	}
+
 }

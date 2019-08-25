@@ -10,5 +10,6 @@ public interface IRegisterService {
 	
 	void save(Registertemporary regi,Servicesharetemporary sst,String info);
 	List<Registertemporary> findAll();
+	Registertemporary findOne(Integer id);
 
 }
