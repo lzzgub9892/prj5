@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.woniu.entity.Registertemporary;
 import com.woniu.entity.Servicesharetemporary;
+import com.woniu.entity.ServicesharetemporaryModel;
 import com.woniu.entity.Userinfo;
 import com.woniu.service.IRegisterService;
 import com.woniu.service.IServiceShareTemporaryService;
@@ -33,7 +34,7 @@ public class RegisterController {
 	
 	//存储临时登记数据
 	@RequestMapping("save")
-	public String save(Registertemporary regi, Servicesharetemporary sst,HttpServletRequest req) {
+	public String save(Registertemporary regi, ServicesharetemporaryModel ssts,HttpServletRequest req) {
 		System.out.println("RegisterController.save()");
 		//获取上传文件数组
         List<MultipartFile> files = ((MultipartHttpServletRequest) req).getFiles("file");
@@ -84,7 +85,7 @@ public class RegisterController {
         regi.setTaxcopy(infos[6]);
         regi.setServicetypeid(1);
 		
-		registerservice.save(regi, sst,info);
+		registerservice.save(regi, ssts,info);
 		return "redirect:tolistruku"; 
 	}
 	

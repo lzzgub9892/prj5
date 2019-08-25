@@ -88,20 +88,20 @@ ${error }
     <td bordercolor="#6666FF"><div align="center">联系方式</div></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="sharename" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="shareidcard" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="shareaddresss" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="sharetype" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="share" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="sharetel" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharename" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].shareidcard" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].shareaddresss" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharetype" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].share" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharetel" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="textfield422" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="textfield42" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="textfield423" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="textfield43" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="textfield424" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="textfield432" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharename" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].shareidcard" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].shareaddresss" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharetype" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].share" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharetel" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF"><input name="textfield422" type="text" size="12"></td>
