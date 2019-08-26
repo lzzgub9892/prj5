@@ -1,9 +1,10 @@
 package com.woniu.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IStatisticsService {
 	
-	Map countByRoomtype(String startdate,String enddate);
+	List countByRoomtype(String startdate,String enddate);
 
 }

@@ -43,9 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
     <tr class=toplist>
       <td bordercolor="#6666FF">统计时段：</td>
-      <td bordercolor="#6666FF"><input type="date" size="16" id="startdate" NAME="startdate">
+      <td bordercolor="#6666FF"><input type="text" size="16" id="startdate" NAME="startdate">
         至
-        <input type="date" size="16" id="enddate" NAME="enddate"></td>
+        <input type="text" size="16" id="enddate" NAME="enddate"></td>
     </tr>
     <tr height="65" align="center" class=list>
       <td height="18" colspan="2" valign="top" bordercolor="#6666FF" class="toplist_text">&nbsp;</td>
@@ -61,10 +61,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script type="text/javascript">
 	 function tongji(){
-		 alert(111);
-		 alert($("#condition").val());
-		 alert($("#startdate").val());
-		 alert($("#enddate").val());
 		 window.location.href ="<%=basePath%>admin/statistics/show.jsp?condition="+$("#condition").val()+"&startdate="+$("#startdate").val()+"&enddate="+$("#enddate").val();
 	 };
 </script>

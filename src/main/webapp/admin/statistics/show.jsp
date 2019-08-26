@@ -19,8 +19,36 @@ demo
 }
 </style>
 <script type="text/javascript">
+	function getUrlParam(name) {
+		res=[];
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return encodeURI(r[2]); return null; //返回参数值
+	};
+	
 	$(function() {
-		
+		var data;
+		 var condition=getUrlParam('condition');
+		 var startdate=getUrlParam('startdate');
+		 var enddate=getUrlParam('enddate');
+		 $.ajax({ 
+			    type:'post',  
+			    url:'show', 
+			    cache: false,
+			    data:{'condition':condition,
+					  'startdate':startdate,
+						'enddate':enddate
+				    },  
+			    dataType:'json', 
+			    success:function(json){ 
+				    data=json;
+				    console.log(data);
+			    	
+			    },
+			    error:function(){ 
+			     alert("请求失败");
+			    }
+			   });
 		$('#container')
 				.highcharts(
 						{
@@ -56,7 +84,7 @@ demo
 								pointFormat : 'Population in 2008: <b>{point.y:.1f} millions</b>'
 							},
 							series : [ {
-								name : 'Population',
+								name : '房屋数',
 								data : [ [ 'Shanghai', 23.7 ],
 										[ 'Lagos', 16.1 ],
 										[ 'Instanbul', 14.2 ],
