@@ -32,11 +32,11 @@ body {
     <td width="20%" align="center" bordercolor="#6666FF">预售许可证号</td>
     <td width="15%" align="center" bordercolor="#6666FF">楼盘状态</td>
   </tr>
-  <tr v-for="l in json"  class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) @click="filea(l.hid)" onClick="document.form_list.submit();">
-    <td width="20%" bordercolor="#6666FF">{{l.hname}}</td>
+  <tr v-for="house in json"  class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) @click="filea(l.hid)" onClick="document.form_list.submit();">
+    <td width="20%" bordercolor="#6666FF">{{house.hn ame}}</td>
     <td width="15%" align="center" bordercolor="#6666FF">楼盘信息</td>
     <td width="20%" align="center" bordercolor="#6666FF">23333</td>
-    <td width="15%" align="center" bordercolor="#6666FF">{{1}}</td>
+    <td width="15%" align="center" bordercolor="#6666FF">{{house.landuse.lname}}</td>
   </tr>
 </table>
 </form>
