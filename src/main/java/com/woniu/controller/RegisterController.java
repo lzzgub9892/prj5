@@ -50,7 +50,7 @@ public class RegisterController {
         
         
         if(regi.getAgentidcard().equals("")||regi.getProposer().equals("")) {
-        	System.out.println("====================================");
+        	
         	req.setAttribute("error", "信息不足，请补充");
         	return "admin/register/ruku";
         }
@@ -65,7 +65,7 @@ public class RegisterController {
             	System.out.println(path);
                 String s = FileUtil.uploadFile(file,path);
                 
-                System.out.println(s+"_________________________________________________");
+                
                 info = info+"_"+s;
                 
             } catch (Exception e) {

@@ -149,18 +149,9 @@ ${error }
     <td bordercolor="#6666FF">审核人：</td>
     <td bordercolor="#6666FF">系统管理员</td>
   </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><span class="STYLE2">复审意见：</span></td>
-    <td colspan="3" bordercolor="#6666FF"><textarea name="textarea2" cols="40" rows="3"></textarea></td>
-    <td bordercolor="#6666FF">复审人：</td>
-    <td bordercolor="#6666FF">系统管理员</td>
-  </tr>
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><span class="STYLE2">审批意见：</span></td>
-    <td colspan="3" bordercolor="#6666FF"><textarea name="textarea3" cols="40" rows="3"></textarea></td>
-    <td bordercolor="#6666FF">审批人：</td>
-    <td bordercolor="#6666FF">系统管理员</td>
-  </tr>
+ 
+ 
+ 
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="6" bordercolor="#6666FF">&nbsp;</td>
     </tr>

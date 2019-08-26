@@ -35,9 +35,10 @@ public class RegisterserviceImpl implements IRegisterService {
 		System.out.println(regi.getRtid()+"=============================================");
 		List<Servicesharetemporary> list = ssts.getServicesharetemporarys();
 		for (Servicesharetemporary sst : list) {
+			if(!sst.getSharename().equals("")) {
 			sst.setRtid(regi.getRtid());
 			servicesharetemporaryMapper.insertSelective(sst);
-			
+			}
 		}
 	}
 
