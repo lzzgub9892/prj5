@@ -35,7 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <option value="1" selected="selected">房屋产别统计</option>
         <option value="2">房屋结构统计</option>
         <option value="3">建筑年代统计</option>
-        <option value="4">建筑面积统计</option>
         <option value="5">建筑区划统计</option>
         <option value="6">房屋土地性质</option>
        </select>

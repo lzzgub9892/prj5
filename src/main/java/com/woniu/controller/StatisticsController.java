@@ -22,6 +22,14 @@ public class StatisticsController {
 		List list=null;
 		if(condition==1) {
 			list=statisticsServiceImpl.countByRoomtype(startdate, enddate);
+		}else if(condition==2) {
+			list=statisticsServiceImpl.countByBuildingstructure(startdate, enddate);
+		}else if(condition==5) {
+			list=statisticsServiceImpl.countByBuildingarea(startdate, enddate);
+		}else if(condition==6) {
+			list=statisticsServiceImpl.countByLandownership(startdate, enddate);
+		}else if(condition==3) {
+			list=statisticsServiceImpl.countByDateBetween(startdate, enddate);
 		}
 		return list;
 		

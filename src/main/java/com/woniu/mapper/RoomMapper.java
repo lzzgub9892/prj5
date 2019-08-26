@@ -7,6 +7,43 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface RoomMapper {
+	
+	/**
+	 * 这个方法是通过起始日期、结束日期找出房屋总数
+	 * @param startdate
+	 * @param enddate
+	 * @param rid
+	 * @return
+	 */
+	Long countByDateBetween(String startdate,String enddate);
+	
+	/**
+	 * 这个方法是通过起始日期、结束日期、土地权属找出房屋总数
+	 * @param startdate
+	 * @param enddate
+	 * @param rid
+	 * @return
+	 */
+	Long countByLandownership(String startdate,String enddate,Integer oid);
+	
+	/**
+	 * 这个方法是通过起始日期、结束日期、建筑区划找出房屋总数
+	 * @param startdate
+	 * @param enddate
+	 * @param rid
+	 * @return
+	 */
+	Long countByBuildingarea(String startdate,String enddate,Integer bid);
+	
+	/**
+	 * 这个方法是通过起始日期、结束日期、房屋结构找出房屋总数
+	 * @param startdate
+	 * @param enddate
+	 * @param rid
+	 * @return
+	 */
+	Long countByBuildingstructure(String startdate,String enddate,Integer bsid);
+	
 	/**
 	    * 这个方法是通过起始日期、结束日期、土地性质找出房屋总数
 	 * @param startdate
