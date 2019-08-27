@@ -185,8 +185,9 @@ ${error }
 			    beforeSend:function(){
 			        //请求前的处理
 			    },
-			    success:function(req){
+			    success:function(map){
 			        //请求成功时处理
+			        alert(map.chenggong);
 			    },
 			    complete:function(){
 			        //请求完成的处理

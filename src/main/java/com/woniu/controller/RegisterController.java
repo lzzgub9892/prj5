@@ -4,13 +4,16 @@ package com.woniu.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,16 +21,23 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.woniu.entity.Client;
+import com.woniu.entity.Ownership;
 import com.woniu.entity.Registertemporary;
 import com.woniu.entity.Service;
+import com.woniu.entity.Serviceshare;
 import com.woniu.entity.Servicesharetemporary;
 import com.woniu.entity.ServicesharetemporaryModel;
+import com.woniu.entity.Sharetype;
 import com.woniu.entity.Userinfo;
 import com.woniu.service.IClientService;
 import com.woniu.service.IRegisterService;
+import com.woniu.service.IServiceService;
 import com.woniu.service.IServiceShareTemporaryService;
+import com.woniu.service.IShareTypeService;
+import com.woniu.service.IUserinfoService;
 import com.woniu.service.impl.ClientServiceImpl;
 import com.woniu.service.impl.RegisterserviceImpl;
+import com.woniu.service.impl.ServiceServiceImpl;
 import com.woniu.util.FileUtil;
 
 @Controller
@@ -40,6 +50,12 @@ public class RegisterController {
 	private IServiceShareTemporaryService serviceShareTemporaryService;
 	@Resource
 	private IClientService clientService;
+	@Resource
+	private IServiceService serviceService;
+	@Resource
+	private IShareTypeService shareTypeService;
+	@Resource
+	private IUserinfoService userinfoService;
 	
 	//存储临时登记数据
 	@RequestMapping("save")
@@ -126,9 +142,12 @@ public class RegisterController {
 	//审核之后的存储流程
 	@RequestMapping("beputinstroge")
 	@ResponseBody
-	public String bePutInStroge(Integer rtid,String textarea,String approver) {
+	@Transactional
+	public Map bePutInStroge(Integer rtid,String textarea,String approver,HttpSession session) {
+		Map<String,String> map = new HashMap();
 		Service service = new Service();
 		Registertemporary regi = registerservice.findOne(rtid);
+		Date date = new Date();
 		//申请人
 		Client client = clientService.findByCilentnameIdcard(regi.getProposer(), regi.getPropidcard());
 		if(client!=null) {
@@ -155,11 +174,11 @@ public class RegisterController {
 			service.setAgent(newclient.getClientid());
 		}
 		//业务类型ID
-		service.setServiceid(regi.getServicetypeid());
+		service.setServicetypeid(regi.getServicetypeid());
 		//业务状态
 		service.setServicestatusid(4);
 		//业务编号
-		String number = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		String number = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
 		number = "10008"+number;
 		service.setServicenumber(number);
 		//文件名
@@ -172,7 +191,40 @@ public class RegisterController {
 		//审批意见
 		service.setIdea(textarea);
 		service.setApprover(approver);
-		return "";
+		//存储
+		serviceService.save(service);
+		
+		//共有人
+		List<Servicesharetemporary> ssts = serviceShareTemporaryService.findByRegistertemporary(rtid);
+		if(ssts!=null&&ssts.size()>=0) {
+			//共有人对象
+			for (Servicesharetemporary sst : ssts) {
+				Serviceshare share = new Serviceshare();
+				share.setServiceid(service.getServiceid());
+				Client cli = clientService.findByCilentnameIdcard(sst.getSharename(), sst.getShareidcard());
+				if(cli!=null) {
+					share.setClientid(cli.getClientid());
+				}
+				share.setShare(sst.getShare().intValue());
+				System.out.println(sst.getSharetype()+"*************************************************");
+				Sharetype sharetype = shareTypeService.findBySharetypename(sst.getSharetype());
+				share.setSharetypeid(sharetype.getSharetypeid());
+			}
+		}
+		//所有权
+		Ownership ownership = new Ownership();
+		//生成业务宗号
+		String osid = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
+		osid = "10001"+osid;
+		ownership.setServicenumber(osid);
+		ownership.setRoomid(regi.getRoomid());
+		ownership.setRegistertime(date);
+		Userinfo userinfo = (Userinfo) session.getAttribute("info");
+		ownership.setUid(userinfo.getUid());
+		ownership.setClientid(client.getClientid());
+		
+		map.put("chenggong", "审核成功，已入库");
+		return map;
 	}
 	
 }

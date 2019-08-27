@@ -54,7 +54,7 @@ public class ClientServiceImpl implements IClientService{
 		criteria.andClientnameEqualTo(clientname);
 		criteria.andIdcardEqualTo(idcard);
 		List<Client> client = clientMapper.selectByExample(example);
-		return client.get(0);
+		return client.size()==0?null:client.get(0);
 
 	}
 	

@@ -58,7 +58,7 @@ public class LoginController {
 			return "/index";
 		}catch (IncorrectCredentialsException e) {
 			// TODO: handle exception
-			request.setAttribute("error", "这个账号的密码是错第");
+			request.setAttribute("error", "密码错误");
 			return "/index";
 		} catch (Exception e) {
 			// TODO: handle exception
