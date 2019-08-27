@@ -45,6 +45,14 @@ public class NetsignController {
 		}
 		return map;
 	}
+	@RequestMapping("findSuccess")
+	public Map findSuccess(PageBean pageBean) throws ParseException {
+		Map<String, Object> map=new HashMap();
+		List<Netsign> list = netsignServiceImpl.findByPageAndSuccess(pageBean);
+		map.put("list", list);
+		map.put("page", pageBean);
+		return map;
+	}
 	
 	@RequestMapping("findByPage")
 	public Map findByPage(PageBean pageBean) throws ParseException {

@@ -133,4 +133,14 @@ public class NetsignServiceImpl implements INetsignService {
 		}
 	}
 
+	@Override
+	public List<Netsign> findByPageAndSuccess(PageBean pageBean) {
+		NetsignExample example=new NetsignExample();
+		example.createCriteria().andNetstatusEqualTo(true);
+		List<Netsign> list = netsignMapper.selectByExample(example, new RowBounds(pageBean.getOffset(), pageBean.getLimit()));
+		int count = (int) netsignMapper.countByExample(example);
+		pageBean.setCount(count);
+		return list;
+	}
+
 }

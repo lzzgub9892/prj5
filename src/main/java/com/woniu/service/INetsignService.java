@@ -20,6 +20,8 @@ public interface INetsignService {
 	List<Netsign> findByPage(PageBean pageBean) throws ParseException;
 	
 	Netsign findByNetnumber(String netnumber);
+
+	List<Netsign> findByPageAndSuccess(PageBean pageBean);
 	
 	
 	
