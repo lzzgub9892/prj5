@@ -36,6 +36,17 @@
     <collection property="housestatus" column="housestatusid" select="com.woniu.mapper.HousestatusMapper.selectByPrimaryKey"></collection>
  	<collection property="publicbuildingss" column="hid" select="com.woniu.mapper.PublicbuildingsMapper.findByHid"></collection>
   </resultMap>
+
+	<select id="findByServicenumber" resultMap="BaseResultMap">
+		select * from house where hid=(
+			select hid from building where buildingid=(
+				select buildingid from room where roomid=(
+					select roomid from ownership where servicenumber=#{servicenumber}
+				)
+			)
+		)
+	</select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

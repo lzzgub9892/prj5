@@ -10,6 +10,11 @@
     <id column="servicestatusid" jdbcType="INTEGER" property="servicestatusid" />
     <result column="servicestatus" jdbcType="VARCHAR" property="servicestatus" />
   </resultMap>
+  
+  <select id="findByName" resultMap="BaseResultMap">
+  	select * from servicestatus where servicestatus=#{servicestatus}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

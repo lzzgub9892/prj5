@@ -18,7 +18,6 @@
 			if($("#checkbox1").is(":checked")&&$("#checkbox2").is(":checked")&&$("#checkbox3").is(":checked")&&$("#checkbox4").is(":checked")){
 				$("#shouli").attr("disabled",false);
 			}else{
-				alert(111111111111);
 				$("#shouli").attr("disabled",true);
 			}
 		}
@@ -36,7 +35,7 @@
 </script>
 </head>
 <body>
-<form name="form" method="post" action="/admin/findAll" onSubmit=event.returnValue=window.showModalDialog("huidan.htm",this,"dialogWidth:450px;dialogHeight:450px")>
+<form name="form" method="post" action="/admin/saveMidservice" onSubmit=event.returnValue=window.showModalDialog("huidan.htm",this,"dialogWidth:450px;dialogHeight:450px")>
 <table border="0" width="100%" cellspacing="0" cellpadding="0" class="table">
   <tr>
     <td width="25%">所有权登记</td>
@@ -72,7 +71,7 @@
       </label>
       （五）为完成登记所必需的其他文件。
       <label>
-      <input name="textfield3" type="text" value="在此处填写其他必要文件名称" size="29">
+      <input name="textfield3" type="text" placeholder="在此处填写其他必要文件名称" size="29">
       </label>
     </p>      </td>
   </tr>
@@ -82,7 +81,7 @@
       <input name="proposer" type="text" value="伍学名" size="22">
     </label></td>
     <td width="25%">申请人身份证件号码：</td>
-    <td width="25%"><input name="textfield2" type="text" value="610101198008081234" size="22" maxlength="18"></td>
+    <td width="25%"><input name="idcard" type="text" value="610101198008081234" size="22" maxlength="18"></td>
   </tr>
   <tr>
     <td><input id="checkbox6" type="checkbox" name="checkbox6" value="checkbox">代理人：</td>

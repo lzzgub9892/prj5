@@ -9,10 +9,9 @@
     -->
     <id column="pid" jdbcType="INTEGER" property="pid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <collection property="citys" column="pid" select="com.woniu.mapper.CityMapper.findByPid" />
   </resultMap>
-  <select id="findByPid" resultMap="BaseResultMap">
-  	select*from province where pid=#{pid}
-  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

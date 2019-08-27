@@ -1,11 +1,16 @@
 package com.woniu.mapper;
 
-import com.woniu.entity.Ownership;
-import com.woniu.entity.OwnershipExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.woniu.entity.Ownership;
+import com.woniu.entity.OwnershipExample;
+
 public interface OwnershipMapper {
+	List<Ownership> findByClientid(Integer clientid);
+	
+	Ownership findByServicenumber(String servicenumber);
 
 	void deleteByRoomid(Integer roomid);
 	/**

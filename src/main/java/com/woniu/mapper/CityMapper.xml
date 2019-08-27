@@ -10,11 +10,13 @@
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-    <collection property="province" column="pid" select="com.woniu.mapper.ProvinceMapper.findByPid"></collection>
+    <collection property="zones" column="cid" select="com.woniu.mapper.ZoneMapper.findByCid" />
   </resultMap>
-  <select id="findByCid" resultMap="BaseResultMap">
-  	select*from city where cid=#{cid}
-  </select>
+  
+  <!-- <resultMap type="com.woniu.entity.City" id="BaseResultMapWithZone" extends="BaseResultMap">
+  	<collection property="zones" column="cid" select="com.woniu.mapper.ZoneMapper.findByCid"></collection>
+  </resultMap> -->
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

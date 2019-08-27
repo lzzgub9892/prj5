@@ -17,6 +17,15 @@
     <collection property="client" column="clientid" select="com.woniu.mapper.ClientMapper.selectByPrimaryKey"></collection>
   	<collection property="userinfo" column="uid" select="com.woniu.mapper.UserinfoMapper.selectByPrimaryKey"></collection>
   </resultMap>
+  
+  <select id="findByClientid" resultMap="BaseResultMap">
+  		select * from ownership where clientid=#{clientid}
+  </select>
+  
+  <select id="findByServicenumber" resultMap="BaseResultMap">
+  	    select * from ownership where servicenumber=#{servicenumber}
+  </select>
+  
   <select id="findByRoomId" resultMap="BaseResultMap">
   		select*from ownership where roomid=#{roomid}
   </select>

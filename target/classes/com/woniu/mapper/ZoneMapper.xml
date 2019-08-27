@@ -10,8 +10,12 @@
     <id column="zid" jdbcType="INTEGER" property="zid" />
     <result column="zname" jdbcType="VARCHAR" property="zname" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
-    <collection property="city" column="cid" select="com.woniu.mapper.CityMapper.findByCid"></collection>
   </resultMap>
+  
+  <select id="findByCid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from zone where cid=#{cid}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -255,7 +259,4 @@
     where zid = #{zid,jdbcType=INTEGER}
   </update>
   <cache />
-  <select id="findByCid" resultMap="BaseResultMap">
-  	select * from zone where cid=#{cid}
-  </select>
 </mapper>
