@@ -1,7 +1,9 @@
 package com.woniu.controller;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,15 +13,20 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.woniu.entity.Client;
 import com.woniu.entity.Registertemporary;
+import com.woniu.entity.Service;
 import com.woniu.entity.Servicesharetemporary;
 import com.woniu.entity.ServicesharetemporaryModel;
 import com.woniu.entity.Userinfo;
+import com.woniu.service.IClientService;
 import com.woniu.service.IRegisterService;
 import com.woniu.service.IServiceShareTemporaryService;
+import com.woniu.service.impl.ClientServiceImpl;
 import com.woniu.service.impl.RegisterserviceImpl;
 import com.woniu.util.FileUtil;
 
@@ -31,6 +38,8 @@ public class RegisterController {
 	private IRegisterService registerservice;
 	@Resource
 	private IServiceShareTemporaryService serviceShareTemporaryService;
+	@Resource
+	private IClientService clientService;
 	
 	//存储临时登记数据
 	@RequestMapping("save")
@@ -111,6 +120,59 @@ public class RegisterController {
 		map.put("regi", regi);
 		map.put("sstss", sstss);
 		return "admin/register/shenhe";
+	}
+	
+	
+	//审核之后的存储流程
+	@RequestMapping("beputinstroge")
+	@ResponseBody
+	public String bePutInStroge(Integer rtid,String textarea,String approver) {
+		Service service = new Service();
+		Registertemporary regi = registerservice.findOne(rtid);
+		//申请人
+		Client client = clientService.findByCilentnameIdcard(regi.getProposer(), regi.getPropidcard());
+		if(client!=null) {
+			service.setProposer(client.getClientid());
+		}else {
+			Client newclient = new Client();
+			newclient.setClientname(regi.getProposer());
+			newclient.setIdcard(regi.getPropidcard());
+			newclient.setPhone(regi.getProptel());
+			newclient.setAddress(regi.getDomicileaddress());
+			clientService.save(newclient);
+			service.setProposer(newclient.getClientid());
+		}
+		//代理人
+		Client clientdaili = clientService.findByCilentnameIdcard(regi.getAgent(), regi.getAgentidcard());
+		if(clientdaili!=null) {
+			service.setAgent(clientdaili.getClientid());
+		}else {
+			Client newclient = new Client();
+			newclient.setClientname(regi.getAgent());
+			newclient.setIdcard(regi.getAgentidcard());
+			
+			clientService.save(newclient);
+			service.setAgent(newclient.getClientid());
+		}
+		//业务类型ID
+		service.setServiceid(regi.getServicetypeid());
+		//业务状态
+		service.setServicestatusid(4);
+		//业务编号
+		String number = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		number = "10008"+number;
+		service.setServicenumber(number);
+		//文件名
+		service.setApplication(regi.getApplication());
+		service.setIdcopy(regi.getIdcopy());
+		service.setPhoto(regi.getPhoto());
+		service.setPurchasecopy(regi.getPurchasecopy());
+		service.setContractcopy(regi.getContractcopy());
+		service.setTaxcopy(regi.getTaxcopy());
+		//审批意见
+		service.setIdea(textarea);
+		service.setApprover(approver);
+		return "";
 	}
 	
 }
