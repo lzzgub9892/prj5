@@ -10,7 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <link rel="stylesheet" href="css/main.css">
 <script language=JavaScript src="../../js/comm.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <style type="../../text/css">
+
 <!--
 body {
 	background-image: url(images/bg.gif);
@@ -142,12 +144,14 @@ ${error }
     <td colspan="6" bordercolor="#6666FF"><div align="left">审批意见：</div></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><span class="STYLE2">审核意见：</span></td>
+    <td bordercolor="#6666FF"><span class="STYLE2">审批意见：</span></td>
     <td colspan="3" bordercolor="#6666FF"><label>
       <textarea name="textarea" cols="40" rows="3"></textarea>
     </label></td>
-    <td bordercolor="#6666FF">审核人：</td>
-    <td bordercolor="#6666FF">系统管理员</td>
+    <td bordercolor="#6666FF">审批人签字：</td>
+    <td bordercolor="#6666FF">
+    	<input type="text" name="approver">
+    </td>
   </tr>
  
  
@@ -157,9 +161,9 @@ ${error }
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="6" align="center" bordercolor="#6666FF">
-      <input type="submit" name="Submit" value="确认审批">
+      <input type="button" name="Submit" value="确认审批">
       &nbsp;&nbsp;
-      <input type="reset" name="Submit2" value="全部清空"></td>
+      <input type="reset" name="Submit2" value="退回"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="6" align="center" bordercolor="#6666FF">&nbsp;</td>
@@ -167,4 +171,33 @@ ${error }
 </table>
 </form>
 </body>
+<script type="text/javascript">
+	$(function(){
+		$("input[name='Submit']").click(function(){
+			var textarea = $("textarea").val();
+			var approver = $("input[name='approver']").val();
+			$.ajax({
+			    url:"beputinstroge",    //请求的url地址
+			    dataType:"json",   //返回格式为json
+			    async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+			    data:{"rtid":"${regi.rtid }","textarea":textarea,"approver":approver},    //参数值
+			    type:"POST",   //请求方式
+			    beforeSend:function(){
+			        //请求前的处理
+			    },
+			    success:function(req){
+			        //请求成功时处理
+			    },
+			    complete:function(){
+			        //请求完成的处理
+			    },
+			    error:function(){
+			        //请求出错处理
+			    }
+			});
+		});
+
+		});
+
+</script>
 </html>

@@ -21,6 +21,53 @@
   	<collection property="dissentingregistrations" column="roomid" select="com.woniu.mapper.DissentingregistrationMapper.findByRoomid"></collection>
   </resultMap>
   
+  <select id="countByDateBetween" resultType="java.lang.Long">
+  	SELECT COUNT(*) FROM room r WHERE EXISTS(	
+		SELECT buildingid FROM building b WHERE EXISTS(
+			SELECT hid FROM house h WHERE
+			r.buildingid=b.buildingid AND
+			b.hid=h.hid AND
+			h.hdate BETWEEN #{startdate} AND #{enddate}
+		)
+	)
+  </select>
+  
+   <select id="countByLandownership" resultType="java.lang.Long">
+  	SELECT COUNT(*) FROM room r WHERE EXISTS(	
+		SELECT buildingid FROM building b WHERE EXISTS(
+			SELECT hid FROM house h WHERE
+			r.buildingid=b.buildingid AND
+			b.hid=h.hid AND
+			h.hdate BETWEEN #{startdate} AND #{enddate}
+			AND oid=#{oid}
+		)
+	)
+  </select>
+  
+  <select id="countByBuildingarea" resultType="java.lang.Long">
+  	SELECT COUNT(*) FROM room r WHERE EXISTS(	
+		SELECT buildingid FROM building b WHERE EXISTS(
+			SELECT hid FROM house h WHERE
+			r.buildingid=b.buildingid AND
+			b.hid=h.hid AND
+			h.hdate BETWEEN #{startdate} AND #{enddate}
+			AND bid=#{bid}
+		)
+	)
+  </select>
+  
+  <select id="countByBuildingstructure" resultType="java.lang.Long">
+  	SELECT COUNT(*) FROM room r WHERE EXISTS(	
+		SELECT buildingid FROM building b WHERE EXISTS(
+			SELECT hid FROM house h WHERE
+			r.buildingid=b.buildingid AND
+			b.hid=h.hid AND
+			h.hdate BETWEEN #{startdate} AND #{enddate}
+			AND bsid=#{bsid}
+		)
+	)
+  </select>
+  
   <select id="countByRoomtype" resultType="java.lang.Long">
   	SELECT COUNT(*) FROM room r WHERE EXISTS(	
 		SELECT buildingid FROM building b WHERE EXISTS(
