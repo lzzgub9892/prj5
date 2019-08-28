@@ -24,33 +24,39 @@ body {
 			$("form").submit();
 			
 			}); */
+		 //点击button的方法
+	    
 		});
 </script>
 </head>
 <body>
-<form name="form_list" method="post" action="">
+
 <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td width="20%" bordercolor="#6666FF">业务类型</td>
     <td width="20%" align="center" bordercolor="#6666FF">业务状态</td>
-    <td width="20%" align="center" bordercolor="#6666FF">申请人</td>
-    <td width="20%" align="center" bordercolor="#6666FF">身份证件号码</td>
+    <td width="10%" align="center" bordercolor="#6666FF">申请人</td>
+    <td width="15%" align="center" bordercolor="#6666FF">身份证件号码</td>
     
-    <td width="20%" align="center" bordercolor="#6666FF">资料员</td>
+    <td width="15%" align="center" bordercolor="#6666FF">资料员</td>
+    <td width="20%" align="center" bordercolor="#6666FF">操作</td>
   </tr>
   <c:forEach items="${regis }" var="regi">
-  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onclick="window.location.href='toshenhe?rtid=${regi.rtid }'">
+  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) >
     <td bordercolor="#6666FF">${regi.servicetype.servicetype }</td>
     <td bordercolor="#6666FF">&lt;已入库&gt;</td>
     <td bordercolor="#6666FF">${regi.proposer }</td>
     <td bordercolor="#6666FF">${regi.propidcard }</td>
     
     <td bordercolor="#6666FF">${user }</td>
+    <td bordercolor="#6666FF">
+    <button type="button" onclick="window.location.href='toshenhe?rtid=${regi.rtid }'" >进行审核</button>
+    <button type="button" onclick="window.location.href='torukuupdate?rtid=${regi.rtid}'" >修改信息</button> </td>
   </tr>
  </c:forEach>
   
 </table>
-</form>
+
 </body>
 
 </html>

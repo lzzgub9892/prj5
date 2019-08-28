@@ -19,7 +19,7 @@ body {
 </head>
 <body>
 ${error }
-<form action="save" method="post" enctype="multipart/form-data">
+<form action="${method==update?update:save }" method="post" enctype="multipart/form-data">
 <table width="738" border="0" cellpadding="1" cellspacing="1" bgcolor="#749cdf">
   <tr class=list align="center">
     <td colspan="5" bordercolor="#6666FF"><div align="left">申请人基本信息：</div></td>
@@ -28,21 +28,22 @@ ${error }
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">申请人：</td>
     <td bordercolor="#6666FF">
-      <input name="proposer" type="text" size="15"></td>
+    <input name="rtid" type="hidden" value="${regi.rtid }">
+      <input name="proposer" type="text" size="15" value="${regi.proposer }"></td>
     <td bordercolor="#6666FF">户籍地址：</td>
-    <td colspan="2" bordercolor="#6666FF"><input name="domicileaddress" type="text" size="32"></td>
+    <td colspan="2" bordercolor="#6666FF"><input name="domicileaddress" value="${regi.domicileaddress }" type="text" size="32"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">联系电话：</td>
-    <td bordercolor="#6666FF"><input name="proptel" type="text" size="15"></td>
+    <td bordercolor="#6666FF"><input name="proptel" value="${regi.proptel }" type="text" size="15"></td>
     <td bordercolor="#6666FF">证件号码：</td>
-    <td colspan="2" bordercolor="#6666FF"><input name="propidcard" type="text" size="18"></td>
+    <td colspan="2" bordercolor="#6666FF"><input name="propidcard" value="${regi.propidcard }" type="text" size="18"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">代理人：</td>
-    <td bordercolor="#6666FF"><input name="agent" type="text" size="15"></td>
+    <td bordercolor="#6666FF"><input name="agent" value="${regi.agent }" type="text" size="15"></td>
     <td bordercolor="#6666FF">证件号码：</td>
-    <td colspan="2" bordercolor="#6666FF"><input name="agentidcard" type="text" size="18"></td>
+    <td colspan="2" bordercolor="#6666FF"><input name="agentidcard" value="${regi.agentidcard }" type="text" size="18"></td>
   </tr>
   <tr align="center" class=list>
     <td colspan="6" bordercolor="#6666FF">&nbsp;</td>
@@ -52,23 +53,23 @@ ${error }
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td width="100" bordercolor="#6666FF">区：</td>
-    <td width="145" bordercolor="#6666FF"><input name="zone" type="text" size="15"></td>
+    <td width="145" bordercolor="#6666FF"><input name="zone" value="${regi.zone }" type="text" size="15"></td>
     <td width="100" bordercolor="#6666FF">建筑区划：</td>
-    <td width="145" bordercolor="#6666FF"><input name="buildingarea" type="text" size="15"></td>
+    <td width="145" bordercolor="#6666FF"><input name="buildingarea" value="${regi.buildingarea }" type="text" size="15"></td>
     <td width="100" bordercolor="#6666FF">丘地号：</td>
     <td bordercolor="#6666FF"><input name="textfield3" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">登记种类：</td>
-    <td bordercolor="#6666FF"><input name="registrationtypes" type="text" size="15"></td>
+    <td bordercolor="#6666FF"><input name="registrationtypes" value="${regi.registrationtypes }" type="text" size="15"></td>
     <td bordercolor="#6666FF">房屋性质：</td>
-    <td bordercolor="#6666FF"><input name="roomtype" type="text" size="15"></td>
+    <td bordercolor="#6666FF"><input name="roomtype" value="${regi.roomtype }" type="text" size="15"></td>
     <td bordercolor="#6666FF">取得方式：</td>
-    <td bordercolor="#6666FF"><input name="gainingmethod" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="gainingmethod" value="${regi.gainingmethod }" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td bordercolor="#6666FF">房屋坐落：</td>
-    <td colspan="3" bordercolor="#6666FF"><input name="roomaddress" type="text" size="40"></td>
+    <td colspan="3" bordercolor="#6666FF"><input name="roomaddress" value="${regi.roomaddress }" type="text" size="40"></td>
     <td bordercolor="#6666FF">分户图：</td>
     <td bordercolor="#6666FF"><input name="textfield8" type="text" size="12"></td>
   </tr>
@@ -87,45 +88,47 @@ ${error }
     <td bordercolor="#6666FF"><div align="center">共有份额</div></td>
     <td bordercolor="#6666FF"><div align="center">联系方式</div></td>
   </tr>
+  <%
+  	
+  %>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharename" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].shareidcard" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].shareaddresss" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharetype" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].share" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharetel" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharename" value="${sstss.servicesharetemporarys[0].sharename }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].shareidcard" value="${sstss.servicesharetemporarys[0].shareidcard }" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].shareaddresss" value="${sstss.servicesharetemporarys[0].shareaddresss }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharetype" value="${sstss.servicesharetemporarys[0].sharetype }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].share" value="${sstss.servicesharetemporarys[0].share }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[0].sharetel" value="${sstss.servicesharetemporarys[0].sharetel }" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharename" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].shareidcard" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].shareaddresss" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharetype" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].share" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharetel" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharename" value="${sstss.servicesharetemporarys[1].sharename }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].shareidcard" value="${sstss.servicesharetemporarys[1].shareidcard }" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].shareaddresss" value="${sstss.servicesharetemporarys[1].shareaddresss }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharetype" value="${sstss.servicesharetemporarys[1].sharetype }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].share" value="${sstss.servicesharetemporarys[1].share }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[1].sharetel" value="${sstss.servicesharetemporarys[1].sharetel }" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].sharename" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].shareidcard" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].shareaddresss" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].sharetype" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].share" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].sharetel" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].sharename" value="${sstss.servicesharetemporarys[2].sharename }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].shareidcard" value="${sstss.servicesharetemporarys[2].shareidcard }" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].shareaddresss" value="${sstss.servicesharetemporarys[2].shareaddresss }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].sharetype" value="${sstss.servicesharetemporarys[2].sharetype }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].share" value="${sstss.servicesharetemporarys[2].share }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[2].sharetel" value="${sstss.servicesharetemporarys[2].sharetel }" type="text" size="12"></td>
   </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].sharename" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].shareidcard" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].shareaddresss" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].sharetype" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].share" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].sharetel" type="text" size="12"></td>
-  </tr>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].sharename" value="${sstss.servicesharetemporarys[3].sharename }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].shareidcard" value="${sstss.servicesharetemporarys[3].shareidcard }" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].shareaddresss" value="${sstss.servicesharetemporarys[3].shareaddresss }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].sharetype" value="${sstss.servicesharetemporarys[3].sharetype }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].share" value="${sstss.servicesharetemporarys[3].share }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[3].sharetel" value="${sstss.servicesharetemporarys[3].sharetel }" type="text" size="12"></td>  </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].sharename" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].shareidcard" type="text" size="18"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].shareaddresss" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].sharetype" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].share" type="text" size="12"></td>
-    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].sharetel" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].sharename" value="${sstss.servicesharetemporarys[4].sharename }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].shareidcard" value="${sstss.servicesharetemporarys[4].shareidcard }" type="text" size="18"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].shareaddresss" value="${sstss.servicesharetemporarys[4].shareaddresss }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].sharetype" value="${sstss.servicesharetemporarys[4].sharetype }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].share" value="${sstss.servicesharetemporarys[4].share }" type="text" size="12"></td>
+    <td bordercolor="#6666FF"><input name="servicesharetemporarys[4].sharetel" value="${sstss.servicesharetemporarys[4].sharetel }" type="text" size="12"></td>
   </tr>
   <tr align="center" class=list>
     <td colspan="6" bordercolor="#6666FF">&nbsp;</td>

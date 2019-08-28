@@ -12,5 +12,6 @@ public interface IRegisterService {
 	void save(Registertemporary regi,ServicesharetemporaryModel ssts,String info);
 	List<Registertemporary> findAll();
 	Registertemporary findOne(Integer id);
+	void update(Integer rtid);
 
 }

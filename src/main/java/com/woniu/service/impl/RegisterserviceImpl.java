@@ -57,4 +57,11 @@ public class RegisterserviceImpl implements IRegisterService {
 		return registertemporaryMapper.selectByPrimaryKey(id);
 	}
 
+
+	@Override
+	public void update(Integer rtid) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

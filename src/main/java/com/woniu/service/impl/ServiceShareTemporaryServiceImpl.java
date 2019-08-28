@@ -20,7 +20,7 @@ public class ServiceShareTemporaryServiceImpl implements IServiceShareTemporaryS
 	@Override
 	public List<Servicesharetemporary> findByRegistertemporary(Integer rtid) {
 		// TODO Auto-generated method stub
-		System.out.println(rtid+"---------------------------------------");
+		
 		if(rtid!=null) {
 		ServicesharetemporaryExample example = new ServicesharetemporaryExample();
 		example.createCriteria().andRtidEqualTo(rtid);

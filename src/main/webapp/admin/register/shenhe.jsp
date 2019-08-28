@@ -163,7 +163,7 @@ ${error }
     <td colspan="6" align="center" bordercolor="#6666FF">
       <input type="button" name="Submit" value="确认审批">
       &nbsp;&nbsp;
-      <input type="reset" name="Submit2" value="退回"></td>
+      
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="6" align="center" bordercolor="#6666FF">&nbsp;</td>

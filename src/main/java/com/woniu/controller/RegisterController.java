@@ -35,9 +35,11 @@ import com.woniu.service.IServiceService;
 import com.woniu.service.IServiceShareTemporaryService;
 import com.woniu.service.IShareTypeService;
 import com.woniu.service.IUserinfoService;
+import com.woniu.service.IserviceshareService;
 import com.woniu.service.impl.ClientServiceImpl;
 import com.woniu.service.impl.RegisterserviceImpl;
 import com.woniu.service.impl.ServiceServiceImpl;
+import com.woniu.service.impl.ServiceShareServiceImpl;
 import com.woniu.util.FileUtil;
 
 @Controller
@@ -56,6 +58,8 @@ public class RegisterController {
 	private IShareTypeService shareTypeService;
 	@Resource
 	private IUserinfoService userinfoService;
+	@Resource
+	private IserviceshareService serviceShareServiceImpl;
 	
 	//存储临时登记数据
 	@RequestMapping("save")
@@ -120,6 +124,7 @@ public class RegisterController {
 		List<Registertemporary> regis = registerservice.findAll();
 		
 		map.put("regis", regis);
+		
 		Userinfo info = (Userinfo) session.getAttribute("info");
 		String user = info.getUname();
 		map.put("user", user);
@@ -202,13 +207,24 @@ public class RegisterController {
 				Serviceshare share = new Serviceshare();
 				share.setServiceid(service.getServiceid());
 				Client cli = clientService.findByCilentnameIdcard(sst.getSharename(), sst.getShareidcard());
+
 				if(cli!=null) {
 					share.setClientid(cli.getClientid());
+				}else {
+					Client newclient = new Client();
+					newclient.setClientname(sst.getSharename());
+					newclient.setIdcard(sst.getShareidcard());
+					newclient.setAddress(sst.getShareaddresss());
+					newclient.setPhone(sst.getSharetel());
+					
+					clientService.save(newclient);
+					share.setClientid(newclient.getClientid());
 				}
 				share.setShare(sst.getShare().intValue());
-				System.out.println(sst.getSharetype()+"*************************************************");
+				
 				Sharetype sharetype = shareTypeService.findBySharetypename(sst.getSharetype());
 				share.setSharetypeid(sharetype.getSharetypeid());
+				serviceShareServiceImpl.save(share);
 			}
 		}
 		//所有权
@@ -225,6 +241,19 @@ public class RegisterController {
 		
 		map.put("chenggong", "审核成功，已入库");
 		return map;
+	}
+	
+	@RequestMapping("torukuupdate")
+	public String update(Integer rtid,ModelMap map) {
+		System.out.println(rtid+"-----------------------------");
+		Registertemporary regi = registerservice.findOne(rtid);
+		List<Servicesharetemporary> ssts = serviceShareTemporaryService.findByRegistertemporary(rtid);
+		ServicesharetemporaryModel sstss = new ServicesharetemporaryModel();
+		sstss.setServicesharetemporarys(ssts);
+		map.put("regi", regi);
+		map.put("sstss", sstss);
+		map.put("method", "update");
+		return "admin/register/ruku";
 	}
 	
 }
