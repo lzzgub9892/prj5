@@ -61,6 +61,14 @@ public class NetsignServiceImpl implements INetsignService {
 		if(room.getRoomstatusid()==3||room.getRoomstatusid()==4) {
 			throw new RuntimeException("该房屋不可以进行网签");
 		}
+		NetsignExample netsignExampl=new NetsignExample();
+		netsignExampl.createCriteria().andRoomidEqualTo(room.getRoomid());
+		List<Netsign> netsignList = netsignMapper.selectByExample(netsignExampl);
+		for (Netsign n : netsignList) {
+			if(n.getNetstatus()==0) {
+				throw new RuntimeException("该房屋正在网签审批，不可重复进行网签");
+			}
+		}
 		OwnershipExample ownershipExample=new OwnershipExample();
 		ownershipExample.createCriteria().andRoomidEqualTo(room.getRoomid());
 		List<Ownership> os = ownershipMapper.selectByExample(ownershipExample);
