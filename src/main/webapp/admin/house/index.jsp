@@ -32,7 +32,7 @@ body {
     <td width="20%" align="center" bordercolor="#6666FF">预售许可证号</td>
     <td width="15%" align="center" bordercolor="#6666FF">楼盘状态</td>
   </tr>
-  <tr v-for="house in json"  class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) @click="filea(l.hid)" onClick="document.form_list.submit();">
+  <tr v-for="house in json"  class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) @click="filea(house.hid)" onClick="document.form_list.submit();">
     <td width="20%" bordercolor="#6666FF">{{house.hname}}</td>
     <td width="15%" align="center" bordercolor="#6666FF">楼盘信息</td>
     <td width="20%" align="center" bordercolor="#6666FF">23333</td>
@@ -50,7 +50,7 @@ window.onload = function(){
         data:{
             json:''
         },
-        mounted:function(){
+        created:function(){
         	this.get();
         },
         methods:{

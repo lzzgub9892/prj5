@@ -379,7 +379,7 @@ public class House implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-    //定义�?个楼栋表的集�?
+    //定义�?个楼栋表的集�?
 //    private Building building;
 //	
 //	public Building getBuilding() {

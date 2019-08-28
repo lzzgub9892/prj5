@@ -109,6 +109,9 @@ body {
 </body>
 <script language=JavaScript src="js/comm.js"></script>
 <script type="text/javascript">
+var html = $.ajax({
+	  async: false
+	 }).responseText;
 window.onload = function(){
 	var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -126,7 +129,7 @@ window.onload = function(){
             house:'',
             building:''
         },
-        mounted:function(){
+        created:function(){
         	this.get();
         },
         methods:{
