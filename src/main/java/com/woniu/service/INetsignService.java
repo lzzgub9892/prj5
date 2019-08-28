@@ -14,6 +14,9 @@ public interface INetsignService {
 	//网签审批
 	void examine(Integer netid);
 	
+	
+	//网签失败
+	void faild(Integer netid);
 	//查询网签状态
 	Netsign findByNetid(Integer netid);
 	

@@ -74,10 +74,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                	 this.json=res.body;
 	                	 if(this.json.netsign!=null&&this.json.netsign!=""){
 		                	 this.netnumber=this.json.netsign.netnumber;
-		                	 if(this.json.netstatus){
+		                	 if(this.json.netsign.netstatus==1){
 			                	 this.netstatus="已通过";
-			               	 }else{
-			               		this.netstatus="未通过";
+			               	 }else if(this.json.netsign.netstatus==0){
+			               		this.netstatus="未审批";
+				             }else if(this.json.netstatus==2){
+			               		this.netstatus="网签失败";
 				             }
 	                	 }
 	                },function(){

@@ -52,7 +52,7 @@ public class NetsignServiceImpl implements INetsignService {
 	@Override
 	public void save(NetsignObj netsignObj) {
 		Netsign netsign=new Netsign();
-		netsign.setNetstatus(false);
+		netsign.setNetstatus(0);
 		netsign.setNettime(new Date());
 		Room room = roomMapper.findRoomidByAllName(netsignObj.getHname(), netsignObj.getBuildingnumber(), netsignObj.getRoomnumber());
 		if(room==null) {
@@ -107,7 +107,7 @@ public class NetsignServiceImpl implements INetsignService {
 			throw new RuntimeException("购房者名下已有"+roomCount+"套房产");
 		}
 		Netsign netsign = netsignMapper.selectByPrimaryKey(netid);
-		netsign.setNetstatus(true);
+		netsign.setNetstatus(1);
 		netsignMapper.updateByPrimaryKeySelective(netsign);
 	}
 
@@ -120,7 +120,7 @@ public class NetsignServiceImpl implements INetsignService {
 	@Override
 	public List<Netsign> findByPage(PageBean pageBean) throws ParseException {
 		NetsignExample example=new NetsignExample();
-		example.createCriteria().andNetstatusEqualTo(false);
+		example.createCriteria().andNetstatusEqualTo(0);
 //		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 //		if(pageBean.getStartDate()!=null&&!pageBean.getStartDate().equals("")) {
 //			System.out.println("!!!!!!!!!!!");
@@ -153,11 +153,19 @@ public class NetsignServiceImpl implements INetsignService {
 	@Override
 	public List<Netsign> findByPageAndSuccess(PageBean pageBean) {
 		NetsignExample example=new NetsignExample();
-		example.createCriteria().andNetstatusEqualTo(true);
+		example.createCriteria().andNetstatusEqualTo(1);
 		List<Netsign> list = netsignMapper.selectByExample(example, new RowBounds(pageBean.getOffset(), pageBean.getLimit()));
 		int count = (int) netsignMapper.countByExample(example);
 		pageBean.setCount(count);
 		return list;
+	}
+
+	@Override
+	public void faild(Integer netid) {
+		Netsign netsign = netsignMapper.selectByPrimaryKey(netid);
+		netsign.setNetstatus(2);
+		netsignMapper.updateByPrimaryKey(netsign);
+		
 	}
 
 }

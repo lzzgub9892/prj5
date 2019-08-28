@@ -89,6 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
     <td colspan="6" align="center" bordercolor="#6666FF">
       <input name="dengjibu" type="button" value="通过" @click="examine()">      &nbsp;
+      <input name="dengjibu" type="button" value="失败" @click="faild()">      &nbsp;
       <input type="button" name="Submit" value="取消" @click="cancel()"></td>
     </tr>
   <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this)>
@@ -156,6 +157,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                }).then(function(res){
 	                	if(res.body.message==null||res.body.message==""){
 	    					alert("登记成功");
+	    					window.location.href ="<%=basePath%>admin/netsign/list.jsp";
+	    				  }else{      
+	    			        alert(res.body.message);
+	    				  } 
+	                
+	                	 
+	                	 
+	                },function(){
+	                    console.log('请求失败处理');
+	                });
+		        },
+		        faild:function(){
+	            	this.$http({
+	                	method:'post',
+	                	url:'faild',
+	                	emulateJSON:true, 
+	                	params:{
+	                		netid:this.netsign.netid
+	                	},	
+	                }).then(function(res){
+	                	if(res.body.message==null||res.body.message==""){
 	    					window.location.href ="<%=basePath%>admin/netsign/list.jsp";
 	    				  }else{      
 	    			        alert(res.body.message);

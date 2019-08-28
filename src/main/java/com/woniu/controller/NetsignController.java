@@ -78,11 +78,15 @@ public class NetsignController {
 		try {
 			netsignServiceImpl.examine(netid);
 		} catch (Exception e) {
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println( e.getMessage());
 			map.put("message", e.getMessage());
 		}
 		return map;
+	}
+	
+	@RequestMapping("faild")
+	public String faild(Integer netid){
+		netsignServiceImpl.faild(netid);
+		return null;
 	}
 	
 	@RequestMapping("query")
