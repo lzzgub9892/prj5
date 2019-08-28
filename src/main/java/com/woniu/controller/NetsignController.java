@@ -73,9 +73,16 @@ public class NetsignController {
 	}
 	
 	@RequestMapping("examine")
-	public String examine(Integer netid){
-		netsignServiceImpl.success(netid);
-		return null;
+	public Map examine(Integer netid){
+		Map<String, Object> map=new HashMap();
+		try {
+			netsignServiceImpl.examine(netid);
+		} catch (Exception e) {
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println( e.getMessage());
+			map.put("message", e.getMessage());
+		}
+		return map;
 	}
 	
 	@RequestMapping("query")

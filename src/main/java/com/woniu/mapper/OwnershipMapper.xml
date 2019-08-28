@@ -18,6 +18,13 @@
   	<collection property="userinfo" column="uid" select="com.woniu.mapper.UserinfoMapper.selectByPrimaryKey"></collection>
   </resultMap>
   
+  <select id="countByBuyerid" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM ownership o WHERE EXISTS (
+	SELECT servicenumber FROM service s WHERE s.proposer=#{buyerid} AND o.servicenumber=s.servicenumber AND s.servicetypeid=6 OR s.servicetypeid=7 OR s.servicetypeid=8
+
+)
+  </select>
+  
   <select id="findByClientid" resultMap="BaseResultMap">
   		select * from ownership where clientid=#{clientid}
   </select>

@@ -11,8 +11,8 @@ public interface INetsignService {
 	//新增网签
 	void save(NetsignObj netsignObj);
 	
-	//网签成功
-	void success(Integer netid);
+	//网签审批
+	void examine(Integer netid);
 	
 	//查询网签状态
 	Netsign findByNetid(Integer netid);

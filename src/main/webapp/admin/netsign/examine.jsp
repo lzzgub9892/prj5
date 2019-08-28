@@ -154,8 +154,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                		netid:this.netsign.netid
 	                	},	
 	                }).then(function(res){
-	                	 alert("网签成功");
-	                	 window.location.href ="<%=basePath%>admin/netsign/list.jsp";
+	                	if(res.body.message==null||res.body.message==""){
+	    					alert("登记成功");
+	    					window.location.href ="<%=basePath%>admin/netsign/list.jsp";
+	    				  }else{      
+	    			        alert(res.body.message);
+	    				  } 
+	                
+	                	 
+	                	 
 	                },function(){
 	                    console.log('请求失败处理');
 	                });

@@ -8,6 +8,13 @@ import com.woniu.entity.Ownership;
 import com.woniu.entity.OwnershipExample;
 
 public interface OwnershipMapper {
+	/**
+	 * 通过购房人id查找有几套房
+	 * @param buyerid
+	 * @return
+	 */
+	Integer countByBuyerid(Integer buyerid);
+	
 	List<Ownership> findByClientid(Integer clientid);
 	
 	Ownership findByServicenumber(String servicenumber);

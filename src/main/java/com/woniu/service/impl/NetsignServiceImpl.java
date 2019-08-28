@@ -21,10 +21,13 @@ import com.woniu.entity.OwnershipExample;
 import com.woniu.entity.OwnershipExample.Criteria;
 import com.woniu.entity.PageBean;
 import com.woniu.entity.Room;
+import com.woniu.entity.Zone;
+import com.woniu.entity.ZoneExample;
 import com.woniu.mapper.ClientMapper;
 import com.woniu.mapper.NetsignMapper;
 import com.woniu.mapper.OwnershipMapper;
 import com.woniu.mapper.RoomMapper;
+import com.woniu.mapper.ZoneMapper;
 import com.woniu.service.INetsignService;
 import com.woniu.service.IRegistertorService;
 
@@ -42,6 +45,9 @@ public class NetsignServiceImpl implements INetsignService {
 	
 	@Resource
 	private  OwnershipMapper ownershipMapper;
+	
+	@Resource
+	private ZoneMapper zoneMapper;
 
 	@Override
 	public void save(NetsignObj netsignObj) {
@@ -72,14 +78,20 @@ public class NetsignServiceImpl implements INetsignService {
 		if(b==null) {
 			throw new RuntimeException("购房者信息不正确");
 		}
+		Zone buyerZone = zoneMapper.selectByPrimaryKey(b.getZid());
+		if(buyerZone.getCid()!=610100) {
+			throw new RuntimeException("购房者不是西安户口");
+		}
 		ClientExample example2=new ClientExample();
 		example2.createCriteria().andClientnameEqualTo(netsignObj.getSellername());
 		example2.createCriteria().andIdcardEqualTo(netsignObj.getSelleridcard());
-		List<Client> ss = clientMapper.selectByExample(example1);
+		List<Client> ss = clientMapper.selectByExample(example2);
 		Client s=ss.get(0);
 		if(s==null) {
 			throw new RuntimeException("售房者信息不正确");
 		}
+		
+		
 		netsign.setBuyer(b.getClientid());
 		netsign.setSeller(s.getClientid());
 		String netnumber = UUID.randomUUID().toString().replaceAll("-","");
@@ -88,7 +100,12 @@ public class NetsignServiceImpl implements INetsignService {
 	}
 
 	@Override
-	public void success(Integer netid) {
+	public void examine(Integer netid) {
+		Integer buyerid = netsignMapper.selectByPrimaryKey(netid).getBuyer();
+		Integer roomCount = ownershipMapper.countByBuyerid(buyerid);
+		if(roomCount!=null&&roomCount!=0) {
+			throw new RuntimeException("购房者名下已有"+roomCount+"套房产");
+		}
 		Netsign netsign = netsignMapper.selectByPrimaryKey(netid);
 		netsign.setNetstatus(true);
 		netsignMapper.updateByPrimaryKeySelective(netsign);
