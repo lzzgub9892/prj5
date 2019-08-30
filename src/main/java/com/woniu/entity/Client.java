@@ -158,10 +158,11 @@ public class Client {
 	public void setZid(Integer zid) {
 		this.zid = zid;
 	}
-	
+
 	@Override
 	public String toString() {
-		return clientname;
+		return "Client [clientid=" + clientid + ", clientname=" + clientname + ", address=" + address + ", idcard="
+				+ idcard + ", phone=" + phone + ", zid=" + zid + "]";
 	}
 	
 }

@@ -43,11 +43,14 @@ public class MidserviceServiceImpl implements IMidserviceService {
 //			c.andServicetypeidEqualTo(midservice.getServicetypeid());
 //		if(midservice.getServicestatusid()!=null)
 //			c.andServicestatusidEqualTo(midservice.getServicestatusid());
-		if(d1!=null&&d2!=null)
-			c.andProcesstimeBetween(d1, d2);
+		if(d1!=null&&d2!=null) {
+			c.andProcesstimeGreaterThan(d1);
+			c.andProcesstimeLessThanOrEqualTo(d2);
+		}
 		int count=midserviceMapper.countByExample(example);
 		pb.setCount(count);
 		List<Midservice> list=midserviceMapper.selectByExample(example,new RowBounds(pb.getOffset(),pb.getLimit()));
+		System.out.println(list);
 		return list;
 	}
 

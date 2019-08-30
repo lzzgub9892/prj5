@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface RoomMapper {
+	Room findByRoomid(int roomid);
 	
 	/**
 	 * 这个方法是通过起始日期、结束日期找出房屋总数

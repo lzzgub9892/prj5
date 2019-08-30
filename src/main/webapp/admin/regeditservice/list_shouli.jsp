@@ -5,52 +5,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <link rel="stylesheet" href="css/main.css">
-<script language=JavaScript src="js/comm.js"></script> -->
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<form name="query" method="post" action="/admin/getMidservice">
-	按业务查询：
-	业务类型：
-	<select name="servicetypeid" id="servicetypeid" onfocus="selectFocus1()" onblur="removeattr1()">
-		<c:forEach items="${servicetypes}" var="types">
-			<option value="${types.servicetypeid }">${types.servicetype }${types.servicetypeid }</option>
-		</c:forEach>
-	</select>
-	业务状态：
-	<select name="servicestatusid" id="servicestatusid" onfocus="selectFocus2()" onblur="removeattr2()">
-		<c:forEach items="${servicestatus }" var="status">
-			<option value="${status.servicestatusid }">${status.servicestatus }</option>
-		</c:forEach>
-	</select><br>
-	按客户查询：
-	客户姓名：
-	<input type="text" name="proposer"/>
-	身份证件号码：
-	<input type="text" name="idcard"/><br>
-	按时间查询：
-	受理时间：
-	<input class="date" type="text" placeholder="请输入起始时间" size=11 name="time1" value="<fmt:formatDate value="${d1}" pattern="yyyy-MM-dd"/>"/>
-	至
-	<input class="date" type="text" placeholder="请输入结束时间" size=11 name="time2" value="<fmt:formatDate value="${d2}" pattern="yyyy-MM-dd"/>"/>
-	<button>query</button>
+<form name="query" id="form1" method="post" action="/admin/getMidservice">
 	<table class="table">
-	  <tr class=list align="center">
-	  	<td width="10%" align="center" bordercolor="#6666FF">业务id</td>
-	    <td width="20%" align="center" bordercolor="#6666FF">业务类型</td>
-	    <td width="10%" align="center" bordercolor="#6666FF">业务状态</td>
-	    <td width="10%" align="center" bordercolor="#6666FF">申请人</td>
-	    <td width="20%" align="center" bordercolor="#6666FF">身份证件号码</td>
-	    <td width="15%" align="center" bordercolor="#6666FF">受理时间</td>
-	    <td width="15%" align="center" bordercolor="#6666FF">受理人</td>
+	<tr>
+		<td colspan="7">
+			按业务查询：
+			业务类型：
+			<select name="servicetypeid" id="servicetypeid" onfocus="selectFocus1()" onblur="removeattr1()">
+				<c:forEach items="${servicetypes}" var="types">
+					<option value="${types.servicetypeid }">${types.servicetype }${types.servicetypeid }</option>
+				</c:forEach>
+			</select>
+			业务状态：
+			<select name="servicestatusid" id="servicestatusid" onfocus="selectFocus2()" onblur="removeattr2()">
+				<c:forEach items="${servicestatus }" var="status">
+					<option value="${status.servicestatusid }">${status.servicestatus }</option>
+				</c:forEach>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="7">
+			按客户查询：
+			客户姓名：
+			<input type="text" name="proposer"/>
+			身份证件号码：
+			<input type="text" name="idcard"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="7">
+			按时间查询：
+			受理时间：
+			<input class="date" type="text" placeholder="请输入起始时间" size=11 name="time1" value="<fmt:formatDate value="${d1}" pattern="yyyy-MM-dd"/>"/>
+			至
+			<input class="date" type="text" placeholder="请输入结束时间" size=11 name="time2" value="<fmt:formatDate value="${d2}" pattern="yyyy-MM-dd"/>"/>
+			<button type="submit">query</button>
+		</td>
+	</tr>
+	
+	  <tr align="center">
+	  	<td width="10%">业务id</td>
+	    <td width="20%">业务类型</td>
+	    <td width="10%">业务状态</td>
+	    <td width="10%">申请人</td>
+	    <td width="20%">身份证件号码</td>
+	    <td width="15%">受理时间</td>
+	    <td width="15%">受理人</td>
 	  </tr>
 	  <c:forEach items="${midservices }" var="midservice">
-		  <tr class=toplist onmouseover=mouseovertr(this) onmouseout=mouseouttr(this) onClick="document.form_list.submit();" align="center">
+		  <tr onclick="to('servicetype=${servicetypes[midservice.servicetypeid-1].servicetype }&&proposer=${midservice.proposer }&&idcard=${midservice.idcard }')" align="center">
 		    <td>${midservice.serviceid }</td>
-		    <td>${servicetypes[midservice.servicetypeid].servicetype }</td>
+		    <td>${servicetypes[midservice.servicetypeid-1].servicetype }</td>
 		    <td>&lt;${servicestatus[midservice.servicestatusid-1].servicestatus }&gt;</td>
 		    <td>${midservice.proposer }</td>
 		    <td>${midservice.idcard }</td>
@@ -58,7 +69,7 @@
 		    <td>${midservice.uid}</td>
 		  </tr>
 	  </c:forEach>
-	  <tr class=list align="center">
+	  <tr align="center">
 	    <td align="center"><a href="javascript:go(1)">首页</a></td>
 	    <td align="center"><a href="javascript:go(${pb.pageNow>1?pb.pageNow-1:pb.pageNow })">上一页</a></td>
 	    <td align="center"><a href="javascript:go(${pb.pageNow==pb.pageCount?pb.pageCount:pb.pageNow+1 })">下一页</a></td>
@@ -81,6 +92,12 @@
 </body>
 </html>
 <script>
+	function to(param){
+		var ele=$("#form1");
+		ele.prop("action","?"+param);
+		alert(ele.attr("action"));
+		ele.submit();
+	}
 	function go(pageNow){
 		document.getElementById("pageNow").value=pageNow;
 		document.forms[0].submit();

@@ -59,7 +59,7 @@ public class MidserviceController {
 			System.out.println(d2);
 		}
 		List<Midservice> midservices=midserviceServiceImpl.findByPage(pb,midservice,d1,d2);
-		System.out.println(midservice);
+		System.out.println(midservices);
 		List<Userinfo> userinfos=userinfoServiceImpl.findAll();
 		List<Servicetype> servicetypes=servicetypeServiceImpl.findAll();
 		List<Servicestatus> servicestatus=servicestatusServiceImpl.findAll();

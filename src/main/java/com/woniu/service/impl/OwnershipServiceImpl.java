@@ -26,4 +26,8 @@ public class OwnershipServiceImpl implements IOwnershipService{
 		return ownershipmapper.findByServicenumber(servicenumber);
 	}
 
+	@Override
+	public List<Ownership> findByHid(Integer hid) {
+		return ownershipmapper.findByHid(hid);
+	}
 }

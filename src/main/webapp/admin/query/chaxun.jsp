@@ -56,7 +56,7 @@
 				$(this).prop('type','text');
 			}
 		});
-		$("select").focus(function(){
+		/* $("select").focus(function(){
 			$(this).prop("size","5");
 		});
 		$("select").blur(function(){
@@ -64,44 +64,56 @@
 		});
 		$("select").change(function(){
 			$(this).prop("size","");
+		}); */
+		$("#servicetype").change(function(){
+			if($("#servicetype").val()==1){
+				$("#iframe").prop("src","/admin/query/buildingquery.jsp");
+			}else if($("#servicetype").val()==2){
+				$("#iframe").prop("src","/admin/query/timequery.jsp");
+			}else{
+				$("#iframe").prop("src","/admin/query/suoyouquan.jsp");
+			}
 		});
 	});
 </script>
 </head>
 <body>
 <form class="form" name="form" method="post" action="/admin/findStart">
-  <table class="table" border="0" cellpadding="1" cellspacing="1">
+  <table class="table">
     <tr align="center" class=list>
-      <td height="25" colspan="4"><div align="center" class="title">综合查询</div></td>
+      <td height="25"><div align="center" class="title">综合查询</div></td>
     </tr>
 
-    <tr class=toplist>
-      <td width="100">请选择查询类型：</td>
-      <td colspan="3"><select name="servicetype">
+    <tr align="center">
+      <td>请选择查询类型：
+      <select name="servicetype" id="servicetype">
         <option>所有权信息查询</option>
-        <option>他项权信息查询</option>
+        <option value=1>他项权信息查询</option>
         <option>预告信息查询</option>
         <option>查封信息查询</option>
         <option>更正和异议查询</option>
         <option>预售许可证查询</option>
         <option>预售合同备案查询</option>
-        <option>登记簿信息查询</option>
+        <option value=2>登记簿信息查询</option>
       </select>      </td>
     </tr>
-    <tr class=toplist>
+    <tr height=700px align="center">
+    	<td colspan="2"><iframe id="iframe" name="iframe" src="/admin/query/suoyouquan.jsp" width="100%" height=500px></iframe></td>
+    </tr>
+   <!--  <tr class=toplist>
       <td width="100">受理流水号：</td>
-      <!-- 业务编号（业务表==》客户表） -->
+      业务编号（业务表==》客户表）
       <td width="245"><input name="servicenumber" type="text" size="37"></td>
       <td width="100">土地证号：</td>
-      <!-- 土地证号(土地证号表--》》楼盘表) -->
+      土地证号(土地证号表--》》楼盘表)
       <td><input name="lnname" type="text" size="37"></td>
     </tr>
     <tr class=toplist>
       <td>产权人：</td>
-      <!-- 客户名称（客户表==》所有权表==》房屋表） -->
+      客户名称（客户表==》所有权表==》房屋表）
       <td><input name="clientname" type="text" size="37"></td>
       <td>房屋坐落：</td>
-      <!-- 房屋坐落（楼盘表） -->
+      房屋坐落（楼盘表）
       <td><input name="location" type="text" size="37">      </td>
     </tr>
 
@@ -109,38 +121,38 @@
       <td>产权证号：</td>
       <td><input name="textfield4" type="text" size="37"></td>
       <td>原产权人：</td>
-      <!-- 客户名称（客户表==》所有权表==》房屋表） -->
+      客户名称（客户表==》所有权表==》房屋表）
       <td><input name="oldclientname" type="text" size="37"></td>
     </tr>
     <tr class=toplist>
       <td>产权人身份证明号：</td>
-      <!-- 身份证号（客户表==》所有权表==》房屋表） -->
+      身份证号（客户表==》所有权表==》房屋表）
       <td><input name="idcard" type="text" size="37"></td>
       <td>原产权证号：</td>
       <td><input name="textfield32" type="text" size="37"></td>
     </tr>
     <tr class=toplist>
       <td>建筑区划</td>
-      <!-- 建筑区划（建筑区划表==》楼盘表） -->
+      建筑区划（建筑区划表==》楼盘表）
       <td>
           <select id="p"></select>
           <select id="c"></select>
           <select id="z"></select>
       </td>
       <td>房屋结构：</td>
-      <!-- 房屋结构（房屋结构表==》楼盘表） -->
+      房屋结构（房屋结构表==》楼盘表）
       <td><input name="bsname" type="text" size="37"></td>
     </tr>
     <tr class=toplist>
       	<td>申请时间：</td>
-      	<!-- 业务办理时间（首先筛选出业务状态为已审批的所有业务，然后跟这些业务的时间进行比较） -->
+      	业务办理时间（首先筛选出业务状态为已审批的所有业务，然后跟这些业务的时间进行比较）
      	<td>
 	      	<input class="date" name="begintime1" type="text" size="11" placeholder="输入时间">
 	      	  至
 	        <input class="date" name="begintime2" type="text" size="11" placeholder="输入时间">
      	</td>
      	<td>填发时间：</td>
-     	<!-- 估计也是从业务表中查询，首先筛选出已发证的所有业务记录，然后进行时间的比较 -->
+     	估计也是从业务表中查询，首先筛选出已发证的所有业务记录，然后进行时间的比较
       	<td width="245">
 	      	<input class="date" name="textfield5222" type="text" size="11" placeholder="输入时间">
 			至
@@ -153,7 +165,7 @@
     <tr height="65" align="center" class=list>
       <td colspan="4" valign="top" class="toplist_text">
       <button name="query" type="submit" id="query">查询</button></td>
-    </tr>
+    </tr> -->
   </table>
 </form>
 </body>

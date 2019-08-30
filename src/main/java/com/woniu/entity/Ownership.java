@@ -3,6 +3,43 @@ package com.woniu.entity;
 import java.util.Date;
 
 public class Ownership {
+	private Room room;
+	private Landnumber landnumber;
+	private House house;
+	private Building building;
+	
+	public Landnumber getLandnumber() {
+		return landnumber;
+	}
+
+	public void setLandnumber(Landnumber landnumber) {
+		this.landnumber = landnumber;
+	}
+
+	public House getHouse() {
+		return house;
+	}
+
+	public void setHouse(House house) {
+		this.house = house;
+	}
+
+	public Building getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(Building building) {
+		this.building = building;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
 	private Userinfo userinfo;
 	
 	
@@ -186,4 +223,14 @@ public class Ownership {
 	public void setClientid(Integer clientid) {
 		this.clientid = clientid;
 	}
+
+	@Override
+	public String toString() {
+		return "Ownership [room=" + room + ", landnumber=" + landnumber + ", house=" + house + ", building=" + building
+				+ ", userinfo=" + userinfo + ", client=" + client + ", osid=" + osid + ", servicenumber="
+				+ servicenumber + ", roomid=" + roomid + ", registertime=" + registertime + ", uid=" + uid
+				+ ", descript=" + descript + ", clientid=" + clientid + "]";
+	}
+
+	
 }

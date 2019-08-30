@@ -43,4 +43,13 @@ public class HouseServiceImpl implements IhouseService {
 		return houseMapper.selectByExample(null);
 	}
 
+	@Override
+	public House findByServicenumber(String servicenumber) {
+		return houseMapper.findByServicenumber(servicenumber);
+	}
+
+	@Override
+	public House findByllbb(String lnname, String location, String bsname, String bname) {
+		return houseMapper.findByllbb(lnname, location, bsname, bname);
+	}
 }

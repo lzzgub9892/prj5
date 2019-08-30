@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            	this.get();
 	            },
 	            register:function(roomid,applicantid){
-	            	window.location.href ="<%=basePath%>admin/regeditservice/suoyouquan.jsp?roomid="+roomid+"applicantid="+applicantid;
+	            	window.location.href ="<%=basePath%>admin/regeditservice/suoyouquan.jsp?roomid="+roomid+"&&applicantid="+applicantid;
 		        }
 	            
 	        }

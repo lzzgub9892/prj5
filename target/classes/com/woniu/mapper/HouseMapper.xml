@@ -36,6 +36,14 @@
     <collection property="housestatus" column="housestatusid" select="com.woniu.mapper.HousestatusMapper.selectByPrimaryKey"></collection>
  	<collection property="publicbuildingss" column="hid" select="com.woniu.mapper.PublicbuildingsMapper.findByHid"></collection>
   </resultMap>
+  
+  <select id="findByllbb" resultMap="BaseResultMap">
+		select * 
+		from house h,landnumber l,buildingstructure bs,buildingarea ba 
+		where h.lnid=l.lnid and h.bsid=bs.bsid and h.bid=ba.bid
+		and l.lnname=#{lnname} and h.location=#{location}
+		and bs.bsname=#{bsname}and ba.bname=#{bname}
+	</select>
 
 	<select id="findByServicenumber" resultMap="BaseResultMap">
 		select * from house where hid=(

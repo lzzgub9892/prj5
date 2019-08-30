@@ -18,19 +18,89 @@
   	<collection property="userinfo" column="uid" select="com.woniu.mapper.UserinfoMapper.selectByPrimaryKey"></collection>
   </resultMap>
   
+   <resultMap type="com.woniu.entity.Ownership" id="BaseResultMapWithOther" extends="BaseResultMap">
+  	  <association property="room" javaType="com.woniu.entity.Room">
+		  <id column="roomid" jdbcType="INTEGER" property="roomid" />
+		  <result column="roomnumber" jdbcType="VARCHAR" property="roomnumber" />
+		  <result column="roomstatusid" jdbcType="INTEGER" property="roomstatusid" />
+		  <result column="buildingid" jdbcType="INTEGER" property="buildingid" />
+	  </association>
+	  <association property="building" javaType="com.woniu.entity.Building">
+  			<id column="buildingid" jdbcType="INTEGER" property="buildingid" />
+		    <result column="buildingname" jdbcType="VARCHAR" property="buildingname" />
+		    <result column="buildingnumber" jdbcType="VARCHAR" property="buildingnumber" />
+		    <result column="floor" jdbcType="INTEGER" property="floor" />
+		    <result column="count" jdbcType="INTEGER" property="count" />
+		    <result column="totalarea" jdbcType="INTEGER" property="totalarea" />
+		    <result column="descripe" jdbcType="VARCHAR" property="descripe" />
+		    <result column="hid" jdbcType="INTEGER" property="hid" />
+  		</association>
+  		<association property="house" javaType="com.woniu.entity.House">
+	  		<id column="hid" jdbcType="INTEGER" property="hid" />
+		    <result column="hname" jdbcType="VARCHAR" property="hname" />
+		    <result column="cid" jdbcType="INTEGER" property="cid" />
+		    <result column="lid" jdbcType="INTEGER" property="lid" />
+		    <result column="oid" jdbcType="INTEGER" property="oid" />
+		    <result column="rid" jdbcType="INTEGER" property="rid" />
+		    <result column="did" jdbcType="INTEGER" property="did" />
+		    <result column="zid" jdbcType="INTEGER" property="zid" />
+		    <result column="bid" jdbcType="INTEGER" property="bid" />
+		    <result column="lnid" jdbcType="INTEGER" property="lnid" />
+		    <result column="bsid" jdbcType="INTEGER" property="bsid" />
+		    <result column="gid" jdbcType="INTEGER" property="gid" />
+		    <result column="location" jdbcType="VARCHAR" property="location" />
+		    <result column="housedrawing" jdbcType="VARCHAR" property="housedrawing" />
+		    <result column="housestatusid" jdbcType="INTEGER" property="housestatusid" />
+		    <result column="hdate" jdbcType="DATE" property="hdate" />
+	  	</association>
+	  	<association property="landnumber" javaType="com.woniu.entity.Landnumber">
+	  		<id column="lnid" jdbcType="INTEGER" property="lnid" />
+		    <result column="lnname" jdbcType="VARCHAR" property="lnname" />
+		    <result column="bid" jdbcType="INTEGER" property="bid" />
+	  	</association>
+	  	<association property="userinfo" javaType="com.woniu.entity.Userinfo">
+	  		<id column="uid" jdbcType="INTEGER" property="uid" />
+		    <result column="uname" jdbcType="VARCHAR" property="uname" />
+		    <result column="upass" jdbcType="VARCHAR" property="upass" />
+		    <result column="isdelete" jdbcType="BIT" property="isdelete" />
+		    <result column="indeptid" jdbcType="INTEGER" property="indeptid" />
+	  	</association>
+	  	<association property="client" javaType="com.woniu.entity.Client">
+	  		 <id column="clientid" jdbcType="INTEGER" property="clientid" />
+		    <result column="clientname" jdbcType="VARCHAR" property="clientname" />
+		    <result column="address" jdbcType="VARCHAR" property="address" />
+		    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+		    <result column="phone" jdbcType="VARCHAR" property="phone" />
+		    <result column="zid" jdbcType="INTEGER" property="zid" />
+	  	</association>
+  </resultMap>
+  
+  <select id="findByHid" resultMap="BaseResultMapWithOther">
+  		select *
+		from ownership o,client c,userinfo u,house h,landnumber l,room r,building b
+		where o.roomid=r.roomid and r.buildingid=b.buildingid and b.hid=h.hid and h.lnid=l.lnid and o.clientid=c.clientid and o.uid=u.uid
+		and h.hid=#{hid}
+  </select>
+  
+  <select id="findByClientid" resultMap="BaseResultMapWithOther">
+  		select *
+		from ownership o,client c,userinfo u,house h,landnumber l,room r,building b
+		where o.roomid=r.roomid and r.buildingid=b.buildingid and b.hid=h.hid and h.lnid=l.lnid and o.clientid=c.clientid and o.uid=u.uid
+		and o.clientid=#{clientid}
+  </select>
+  
+  <select id="findByServicenumber" resultMap="BaseResultMapWithOther">
+  	    select *
+		from ownership o,client c,userinfo u,house h,landnumber l,room r,building b
+		where o.roomid=r.roomid and r.buildingid=b.buildingid and b.hid=h.hid and h.lnid=l.lnid and o.clientid=c.clientid and o.uid=u.uid
+		and o.servicenumber=#{servicenumber}
+  </select>
+  
   <select id="countByBuyerid" resultType="java.lang.Integer">
   	SELECT COUNT(*) FROM ownership o WHERE EXISTS (
 	SELECT servicenumber FROM service s WHERE s.proposer=#{buyerid} AND o.servicenumber=s.servicenumber AND s.servicetypeid=6 OR s.servicetypeid=7 OR s.servicetypeid=8
 
 )
-  </select>
-  
-  <select id="findByClientid" resultMap="BaseResultMap">
-  		select * from ownership where clientid=#{clientid}
-  </select>
-  
-  <select id="findByServicenumber" resultMap="BaseResultMap">
-  	    select * from ownership where servicenumber=#{servicenumber}
   </select>
   
   <select id="findByRoomId" resultMap="BaseResultMap">

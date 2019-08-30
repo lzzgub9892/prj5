@@ -8,6 +8,7 @@ import com.woniu.entity.Ownership;
 import com.woniu.entity.OwnershipExample;
 
 public interface OwnershipMapper {
+	List<Ownership> findByHid(Integer hid);
 	/**
 	 * 通过购房人id查找有几套房
 	 * @param buyerid

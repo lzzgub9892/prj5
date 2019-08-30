@@ -9,7 +9,7 @@ import com.woniu.entity.HouseExample;
 
 
 public interface HouseMapper {
-	
+	House findByllbb(String lnname,String location,String bsname,String bname);
 	House findByServicenumber(String servicenumber);
 
 	/**

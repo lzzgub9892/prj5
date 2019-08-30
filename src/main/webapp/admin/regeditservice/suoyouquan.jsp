@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/style_1.css">
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -13,7 +12,50 @@
 </head>
 </style>
 <script>
-	$("document").ready(function(){
+	$(document).ready(function(){
+
+		/*获取上个页面传递的roomid和所有人id*/
+		/*=================================================*/
+		var url = location.search; //获取url中"?"符后的字串
+	     var theRequest = new Object();
+	     if (url.indexOf("?") != -1) {
+	         var str = url.substr(1);
+	         strs = str.split("&");
+	         for(var i = 0; i < strs.length; i ++) {
+	             theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+	         }
+	     }
+		/*=================================================*/
+		
+		var types="";
+		var client="";
+		$.post("/admin/findAllServicetype",{clientid:theRequest.applicantid},function(data){
+			if(data!=null){
+				client=data.client;
+				$("#proposer").val(client.clientname);
+				$("#idcard").val(client.idcard);
+				types=data.servicetypes;
+				for(var i=0;i<types.length;i++){
+					if(types[i].pid==0){
+						$("#bigservicetype").append("<option value="+types[i].servicetypeid+">"+types[i].servicetype+"11</option>");
+					}
+				}
+				fillType(1);
+			}
+		});
+		
+		function fillType(servicetypeid){
+			for(var i=0;i<types.length;i++){
+				if(types[i].pid==servicetypeid){
+					$("#servicetype").append("<option value="+types[i].servicetypeid+">"+types[i].servicetype+"</option>");
+				}
+			}
+		}
+		$("#bigservicetype").change(function(){
+			$("#servicetype").empty();
+			var value=$(this).val();
+			fillType(value);
+		});
 		function getstate(){
 			if($("#checkbox1").is(":checked")&&$("#checkbox2").is(":checked")&&$("#checkbox3").is(":checked")&&$("#checkbox4").is(":checked")){
 				$("#shouli").attr("disabled",false);
@@ -35,16 +77,14 @@
 </script>
 </head>
 <body>
-<form name="form" method="post" action="/admin/saveMidservice" onSubmit=event.returnValue=window.showModalDialog("huidan.htm",this,"dialogWidth:450px;dialogHeight:450px")>
-<table border="0" width="100%" cellspacing="0" cellpadding="0" class="table">
+<h3>房屋登记</h3>
+<form name="form" method="post" action="/admin/saveMidservice">
+<table class="table">
   <tr>
-    <td width="25%">所有权登记</td>
+    <td width="25%">选择登记类型</td>
     <td colspan="3">
-      <select name="servicetypeid">
-	      <c:forEach items="${servicetypes}" var="type">
-	        <option value="${type.servicetypeid }">${type.servicetype }</option>
-	      </c:forEach>
-      </select>    
+      <select id="bigservicetype"></select>
+      <select id="servicetype" name="servicetypeid"></select>    
     </td>
   </tr>
   <tr>
@@ -57,7 +97,7 @@
       <label>
       <input id="checkbox2" name="checkbox2" type="checkbox" value="checkbox" checked>
       </label>
-      （二）申请人身份证明；<u> </u><br>
+      （二）申请人身份证明；<br>
       <label>
       <input id="checkbox3" name="checkbox3" type="checkbox" value="checkbox" checked>
       </label>
@@ -78,10 +118,10 @@
   <tr>
     <td>申请人：</td>
     <td width="25%"><label>
-      <input name="proposer" type="text" value="伍学名" size="22">
+      <input name="proposer" id="proposer" type="text" placeholder="如：伍学名" size="22">
     </label></td>
     <td width="25%">申请人身份证件号码：</td>
-    <td width="25%"><input name="idcard" type="text" value="610101198008081234" size="22" maxlength="18"></td>
+    <td width="25%"><input name="idcard" id="idcard" type="text" placeholder="如：610101198008081234" size="22" maxlength="18"></td>
   </tr>
   <tr>
     <td><input id="checkbox6" type="checkbox" name="checkbox6" value="checkbox">代理人：</td>

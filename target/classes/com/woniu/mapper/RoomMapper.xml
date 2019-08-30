@@ -21,6 +21,25 @@
   	<collection property="dissentingregistrations" column="roomid" select="com.woniu.mapper.DissentingregistrationMapper.findByRoomid"></collection>
   </resultMap>
   
+  <resultMap id="BaseResultMapWithBuilding" type="com.woniu.entity.Room" extends="BaseResultMap">
+  		<association property="building" javaType="com.woniu.entity.Building">
+  			<id column="buildingid" jdbcType="INTEGER" property="buildingid" />
+		    <result column="buildingname" jdbcType="VARCHAR" property="buildingname" />
+		    <result column="buildingnumber" jdbcType="VARCHAR" property="buildingnumber" />
+		    <result column="floor" jdbcType="INTEGER" property="floor" />
+		    <result column="count" jdbcType="INTEGER" property="count" />
+		    <result column="totalarea" jdbcType="INTEGER" property="totalarea" />
+		    <result column="descripe" jdbcType="VARCHAR" property="descripe" />
+		    <result column="hid" jdbcType="INTEGER" property="hid" />
+  		</association>
+  </resultMap>
+  
+  <select id="findByRoomid" resultMap="BaseResultMapWithBuilding">
+  		select * from room r join building b
+  		on r.buildingid=b.buildingid
+  		where r.roomid=#{roomid}
+  </select>
+  
   <select id="countByDateBetween" resultType="java.lang.Long">
   	SELECT COUNT(*) FROM room r WHERE EXISTS(	
 		SELECT buildingid FROM building b WHERE EXISTS(

@@ -10,4 +10,6 @@ public interface IhouseService {
   void delete(int hid);
   House findone(int hid);
   List<House> findall( );
+  House findByServicenumber(String servicenumber);
+  House findByllbb(String lnname,String location,String bsname,String bname);
 }
