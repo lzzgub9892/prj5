@@ -188,6 +188,7 @@ ${error }
 			    success:function(map){
 			        //请求成功时处理
 			        alert(map.chenggong);
+			        window.location.href='list_shanzheng.jsp';
 			    },
 			    complete:function(){
 			        //请求完成的处理

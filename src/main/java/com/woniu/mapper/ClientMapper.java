@@ -4,8 +4,13 @@ import com.woniu.entity.Client;
 import com.woniu.entity.ClientExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface ClientMapper {
+	
+	@Select("select * from client where clientid = #{clientid}")
+	Client findById(Integer clientid);
+	
 	Client findByNameAndIdcard(Client client);
 	
 	/**

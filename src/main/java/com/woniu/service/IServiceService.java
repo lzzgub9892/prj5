@@ -8,4 +8,5 @@ public interface IServiceService {
 	void save(Service service);
 	
 	List<Service> findAll();
+	List<Service> findByServicestatus(Integer servicestatus);
 }

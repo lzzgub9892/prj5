@@ -256,6 +256,16 @@ public class RegisterController {
 		return "admin/register/ruku";
 	}
 	
+	@RequestMapping("getshenhelist")
+	@ResponseBody
+	public List getShenHeList(Integer servicestatusid) {
+		
+		
+		List<Service> list = serviceService.findByServicestatus(servicestatusid);
+		
+		return list;
+	}
+	
 }
 
 
